@@ -9,3 +9,9 @@ Los programas que vamos a utilizar son los siguientes:
 - Visual Studio Code
 - Docker
 - VirtualBox 
+
+*Practicas*
+**Practica 1**
+[GitHub][g]
+
+[g]: (https://google.com)
