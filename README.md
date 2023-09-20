@@ -11,7 +11,7 @@ Los programas que vamos a utilizar son los siguientes:
 - VirtualBox 
 
 *Practicas*
-**Practica 1**
-[GitHub][g]
+1. **Practica 1**
+2. [GitHub][g]
 
 [g]: (https://google.com)
