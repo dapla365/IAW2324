@@ -15,6 +15,6 @@ Los programas que vamos a utilizar son los siguientes:
 
 *_Practicas_*
 1. **Practica 1**
-1. **Practica 2**
-2. [GitHub](https://google.com)
+2. **Practica 2**
+3. [IAW2324](https://dapla365.github.io/IAW2324/)
 
