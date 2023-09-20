@@ -10,8 +10,11 @@ Los programas que vamos a utilizar son los siguientes:
 - Docker
 - VirtualBox 
 
-*Practicas*
-1. **Practica 1**
-2. [GitHub][g]
+> [!WARNING]
+> Ejemplo de Aviso
 
-[g]: (https://google.com)
+*_Practicas_*
+1. **Practica 1**
+1. **Practica 2**
+2. [GitHub](https://google.com)
+
