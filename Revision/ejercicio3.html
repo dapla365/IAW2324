@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNI</title>
+</head>
+<body>
+    <input type="text" id="dni" placeholder="111111111">
+    <button onclick="letraDNI()">Resolver</button>
+    <p id="resultado"></p>
+    <script>
+        function letraDNI(){
+            let dni = document.getElementById("dni").value;
+            var cadena="TRWAGMYFPDXBNJZSQVHLCKET";
+            var posicion = dni%23;
+            var letra = cadena.substring(posicion,posicion+1);
+            document.getElementById("resultado").innerHTML = dni+" - "+letra;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color</title>
+    <link rel="stylesheet" href="circulos.css">
+
+</head>
+<body>
+    <div id="rojo"></div>
+    <div id="verde"></div>
+    <div id="azul"></div>
+    <br>
+    <button onclick="cambiar('rojo','red')">Cambiar</button>
+    <button onclick="cambiar('verde','green')">Cambiar</button>
+    <button onclick="cambiar('azul','blue')">Cambiar</button>
+    <script>
+        function Mostrar(color){
+            let c = document.getElementById(color);
+            c.style.display = "inline-block";
+        }
+        function Ocultar(color){
+            let c = document.getElementById(color);
+            c.style.display = "none";
+        }
+
+        function cambiar(id, color){
+            let c = document.getElementById(id);
+            if(c.style.backgroundColor == "transparent"){
+                c.style.backgroundColor = color;
+            }else{
+                c.style.backgroundColor = "transparent"
+            }
+        }
+
+    </script>
+</body>
+</html>

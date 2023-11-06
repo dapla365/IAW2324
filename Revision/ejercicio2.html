@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moneda</title>
+</head>
+<body>
+    <input type="text" id="valor" placeholder="valor">
+    <button onclick="euro()">€</button>
+    <button onclick="dolar()">$</button>
+    <p id="resultado"></p>
+
+    <script>
+        function euro(){
+            if(document.getElementById("valor").value <= 0){return;}
+            let c = document.getElementById("valor").value;
+            document.getElementById("resultado").innerHTML = (parseFloat(c)*1.07).toFixed(2)  + " €";
+        }
+
+        function dolar(){
+            if(document.getElementById("valor").value <= 0){return;}
+            let c = document.getElementById("valor").value;
+            document.getElementById("resultado").innerHTML = (parseFloat(c)*0.93).toFixed(2) + " $";
+        }
+
+    </script>
+</body>
+</html>
