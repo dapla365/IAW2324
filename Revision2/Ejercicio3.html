@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        form,
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Formulario</h2>
+
+    <form action="">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" placeholder="nombre" required><br>
+        <p id="error0" style="display: none; color: red;">Campo requerido</p>
+
+        <label for="apellido">Apellido:</label><br>
+        <input type="text" id="apellido" name="apellido" placeholder="apellido" required><br>
+        <p id="error1" style="display: none; color: red;">Campo requerido</p>
+
+        <label for="correo">Correo electrónico:</label><br>
+        <input type="text" id="correo" name="correo" placeholder="ejemplo@gmail.com" required><br>
+        <p id="error2" style="display: none; color: red;">Campo requerido</p>
+
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" name="direccion" placeholder="direccion"><br>
+
+        <label for="ciudad">Ciudad:</label><br>
+        <input type="text" id="ciudad" name="ciudad" placeholder="ciudad"><br>
+
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono" placeholder="telefono"><br>
+
+        <label for="dni">DNI:</label><br>
+        <input type="text" id="dni" name="dni" placeholder="dni" required><br>
+        <p id="error3" style="display: none; color: red;">Campo requerido</p>
+
+        <label for="pin1">PIN:</label><br>
+        <input type="text" id="pin1" name="pin1" placeholder="pin" required><br>
+        <p id="error4" style="display: none; color: red;">Campo requerido</p>
+
+        <label for="pin2">Repetir PIN:</label><br>
+        <input type="text" id="pin2" name="pin2" placeholder="pin" required><br>
+        <p id="error5" style="display: none; color: red;">Campo requerido</p>
+
+        <br>
+        <input type="button" onclick="validar()" value="Submit">
+    </form>
+
+    <p id="resultado"></p>
+    <script>
+        function validar() {
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById("apellido").value;
+            let correo = document.getElementById("correo").value;
+            let direccion = document.getElementById("direccion").value;
+            let ciudad = document.getElementById("ciudad").value;
+            let telefono = document.getElementById("telefono").value;
+            let dni = document.getElementById("dni").value;
+            let pin1 = document.getElementById("pin1").value;
+            let pin2 = document.getElementById("pin2").value;
+
+            //Errores en .lenght
+            if (dni.lenght != 9 || !validarDNI()) {
+                document.getElementById("error3").style.display = "block";
+                return;
+            } else {
+                document.getElementById("error3").style.display = "none";
+            }
+            if (pin1.lenght != 8 || pin2.lenght != 8 || pin1 == pin2) {
+                document.getElementById("error4").style.display = "block";
+                document.getElementById("error5").style.display = "block";
+                return;
+            } else {
+                document.getElementById("error4").style.display = "none";
+                document.getElementById("error5").style.display = "none";
+            }
+
+            let text = "Su usuario es: " + nombre + apellido;
+            if (direccion != "" && direccion != null) {
+                text += "\n" + direccion;
+            }
+            if (ciudad != "" && ciudad != null) {
+                text += "\n" + ciudad;
+            }
+            if (telefono != "" && telefono != null) {
+                text += "\n" + telefono;
+            }
+            alert(text);
+        }
+
+        function validarDNI() {
+            let dnia = document.getElementById("dni").value.toUpperCase();
+            var validar_dni = /^[XYZ]?\d{8}[A-Z]$/;
+            if (validar_dni.test(dnia) === true) {
+                let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+
+                let numero = dnia.charAt(0) + dnia.charAt(1) + dnia.charAt(2) + dnia.charAt(3) + dnia.charAt(4) + dnia.charAt(5) + dnia.charAt(6) + dnia.charAt(7);
+                let resto = numero % 23;
+                let dni_correspondiente = numero + letras[resto];
+                if (dni_correspondiente === dnia) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
