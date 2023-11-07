@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social</title>
+</head>
+<body>
+    <input type="text" id="valor" placeholder="Nueva publicación">
+    <button onclick="add()">Añadir</button>
+    <div id="contenido"></div>
+    <script>
+        let array = [];
+        function add(){
+            let c = document.getElementById("valor").value;
+            if(c == null) return;
+            array.push(c);
+            mostrar();
+        }
+
+        function mostrar(){
+            let b = "";
+            for(let a=0;a<array.length;a++){
+                b += '<p id="'+array[a]+'">'+array[a]+'<img width="10px" onclick="remove(`'+array[a]+'`)" src="https://cdn-icons-png.flaticon.com/512/58/58326.png" alt="papelera"></p>';
+            }
+            document.getElementById("contenido").innerHTML = b;
+        }
+        function remove(id){
+            for(let a=0;a<array.length;a++){
+                if(array[a] == id){
+                    array.splice(a, 1);
+                    break;
+                }    
+            }
+            mostrar();
+        }
+    </script>
+
+</body>
+</html>
