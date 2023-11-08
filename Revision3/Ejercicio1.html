@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numero</title>
+</head>
+
+<body>
+    <h2>Escribe un numero entre el 0 y el 5</h2>
+    <input type="number" id="numero" required>
+    <button onclick="juego()">Probar</button>
+
+    <p id="respuesta"></p>
+    <script>
+
+        function juego() {
+            let numero = document.getElementById("numero").value;
+            let r = Math.floor(Math.random() * 6);
+            if (numero < 0 || numero > 5 || numero == "" || isNaN(numero)) {
+                alert('Introduce un numero entre el 0 y el 5');
+                return;
+            }
+            
+            let text = "";
+            if (numero == r) {
+                text = 'Has acertado, numero correcto: ' + numero;
+            } else {
+                text = 'Has fallado, numero introducido: ' + numero + '<br>Numero correcto: ' + r;
+            }
+            document.getElementById("respuesta").innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>

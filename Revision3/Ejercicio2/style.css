@@ -1,0 +1,50 @@
+body{
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#juego{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1300px;
+    height: 600px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+#start{
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+#start:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+#start:disabled:hover{
+    cursor:auto;
+    background-color: white;
+    color: black;
+}
+
+#restart{
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    margin-top: 30px;
+    
+    border-radius: 10px;
+}
+#restart:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
