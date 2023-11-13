@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
             let a = document.getElementById("masa").value;
             let b = document.getElementById("altura").value;
             if(a == null || b == null || a <= 0 || b <= 0){
-            document.getElementById("resultado").innerHTML = "Peso o altura no valido"
+                document.getElementById("resultado").innerHTML = "Peso o altura no valido"
                return; 
             }
             b=b/100;
@@ -29,8 +29,6 @@
                 document.getElementById("resultado").innerHTML = c+ " Normal"
             }else if(c < 18.5 ){
                 document.getElementById("resultado").innerHTML = c+ " Peso inferior al normal"
-            }else if(c <= 0 ){
-                document.getElementById("resultado").innerHTML = c+ " Peso no valido"
             }
         }
 

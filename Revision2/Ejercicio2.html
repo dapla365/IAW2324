@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social</title>
     <title>Red Social</title>
     <style>
         #contenido{
@@ -25,34 +27,28 @@
     </style>
 </head>
 <body>
-    <h1>Publicaciones</h1>
     <input type="text" id="valor" placeholder="Nueva publicación">
     <button onclick="add()">Añadir</button>
     <div id="contenido"></div>
     <script>
-        let array = ["Ejemplo1", "Ejemplo2"];
+        let cadena = ["Ejemplo1","Ejemplo2"];
         mostrar();
         function add(){
             let c = document.getElementById("valor").value;
             if(c == null) return;
-            array.push(c);
+            cadena.push(c);
             mostrar();
         }
 
         function mostrar(){
-            let b = "";
-            for(let a=0;a<array.length;a++){
-                b += '<p id="'+array[a]+'">'+array[a]+'<img width="20px" onclick="remove(`'+array[a]+'`)" src="https://cdn-icons-png.flaticon.com/512/58/58326.png" alt="papelera"></p>';
+            let html = "";
+            for(let a=0;a<cadena.length;a++){
+                html += '<p id="'+a+'">'+cadena[a]+'<img width="30px" onclick="remove(`'+a+'`)" src="https://cdn-icons-png.flaticon.com/512/58/58326.png" alt="papelera"></p>';
             }
-            document.getElementById("contenido").innerHTML = b;
+            document.getElementById("contenido").innerHTML = html;
         }
         function remove(id){
-            for(let a=0;a<array.length;a++){
-                if(array[a] == id){
-                    array.splice(a, 1);
-                    break;
-                }    
-            }
+            cadena.splice(id, 1);
             mostrar();
         }
     </script>

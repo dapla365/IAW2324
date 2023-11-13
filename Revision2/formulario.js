@@ -92,22 +92,22 @@ function validar() {
 
 
 function validarNombre() {
+    let valido = false;
     if (nombre.value != "" && nombre.value != null && nombre.value.length > 1) {
-        return true;
+        valido = true;
     }
-    return false;
+    return valido;
 }
 function validarApellido() {
+    let valido = false;
     if (apellido.value != "" && apellido.value != null && apellido.value.length > 1) {
-        return true;
+        valido = true;
     }
-    return false;
+    return valido;
 }
 function validarCorreo() {
-    if (correo.value != "" && correo.value != null) {
-        return true;
-    }
-    return false;
+    let validar = "";
+    return validar.test(correo.value);
 }
 function validarDNI() {
     let dnia = dni.value.toUpperCase();
