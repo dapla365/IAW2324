@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Social</title>
-    <title>Red Social</title>
     <style>
         #contenido{
             margin-top: 10px;
@@ -34,9 +33,9 @@
         let cadena = ["Ejemplo1","Ejemplo2"];
         mostrar();
         function add(){
-            let c = document.getElementById("valor").value;
-            if(c == null) return;
-            cadena.push(c);
+            let nuevo = document.getElementById("valor").value;
+            if(nuevo == null) return;
+            cadena.push(nuevo);
             mostrar();
         }
 
