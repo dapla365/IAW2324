@@ -12,6 +12,7 @@
     <p id="resultado"></p>
 
     <script>
+        document.getElementById("resultado").innerHTML = localStorage.getItem("imc");
         function calcular(){
             let a = document.getElementById("masa").value;
             let b = document.getElementById("altura").value;
@@ -21,6 +22,9 @@
             }
             b=b/100;
             let c = (a/(b*b)).toFixed(2);
+
+            localStorage.setItem("imc", c);
+
             if(c >= 30){
                 document.getElementById("resultado").innerHTML = c+ " Obesidad"
             }else if(c >= 25 && c < 30 ){
@@ -30,6 +34,7 @@
             }else if(c < 18.5 ){
                 document.getElementById("resultado").innerHTML = c+ " Peso inferior al normal"
             }
+
         }
 
     </script>
