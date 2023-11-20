@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeatherMap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="city" placeholder="Sevilla">
+    <button onclick="busca()">Ver tiempo</button>
+    <p id="respuesta"></p>
+
+    <script>
+        let key = "b9037c4ffbc34e7f23012d5b7722a79c";
+        function busca(){
+            let ciudad = document.getElementById("city").value;
+            $.ajax({
+                url: `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${key}&units=metric`,
+                success: function(data){
+                    $("#respuesta").text(data.main.temp+" ºC");
+                },
+                error: function(){
+                    $("#respuesta").text("No se pudo obtener ciudad");
+                }
+            });            
+        }
+
+    </script>
+</body>
+</html>

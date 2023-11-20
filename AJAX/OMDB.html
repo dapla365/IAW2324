@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="titulo" placeholder="Pelicula">
+    <button onclick="busca()">Ver información</button>
+    <p id="respuesta"></p>
+
+    <script>
+        let key = "d029f924";
+        function busca(){
+            let titulo = document.getElementById("titulo").value;
+            $.ajax({
+                url: `http://www.omdbapi.com/?apikey=${key}&t=${titulo}`,
+                success: function(data){
+                    if (data.Response == "True") {
+                    $('#respuesta').html(`
+                <h2>${data.Title}(${data.Year})</h2>
+                <img src='${data.Poster}'>
+                <p>Actores: ${data.Actors}</p>
+                <p>Resumen: ${data.Plot}</p>
+                  `)
+                }else{
+                    $("#respuesta").text("No se pudo obtener pelicula");
+                }
+            },
+                error: function(){
+                    $("#respuesta").text("No se pudo obtener pelicula");
+                }
+            });            
+        }
+
+    </script>
+</body>
+</html>

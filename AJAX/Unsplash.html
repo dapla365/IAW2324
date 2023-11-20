@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsplash</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <button onclick="busca()">Ver imagen aleatoria</button><br><br>
+    <img src="" id="imagen" alt="imagen">
+    <p id="respuesta"></p>
+
+    <script>
+        let key = "ImLTRu4TC2KSc9RmEM44tgkk4NyaInoyIU_ZuOGt56w";
+        busca();
+        function busca(){
+            $.ajax({
+                url: `https://api.unsplash.com/photos/random?client_id=${key}`,
+                success: function(data){
+                    $('#imagen').attr('src', data.urls.small);
+                },
+                error: function(){
+                    $("#respuesta").text("No se pudo obtener imagen");
+                }
+            });            
+        }
+
+    </script>
+</body>
+</html>
