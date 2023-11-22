@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giphy</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="texto" placeholder="texto">
+    <button onclick="busca()">Buscar</button><br><br>
+    <p id="respuesta"></p>
+
+    <script>
+        function busca(){
+            let texto=$('#texto').val();
+            let key = '3j16C1EtumDvRuaPiTWK5BlJ17xXwmfN';
+            let secreto = '53c40b6e83ad0d4d';
+            
+            $.ajax({
+                url:"https://api.giphy.com/v1/gifs/search?api_key="+key+"&q="+texto,
+                success: function(r) {   
+
+                    $('#respuesta').html("<h2>"+r.data[0].title+"</h2><img src='" + r.data[0].images.original.url+"'>");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

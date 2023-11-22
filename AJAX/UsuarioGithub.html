@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario Github</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="usuario" placeholder="usuario">
+    <button onclick="busca()">Buscar</button><br><br>
+    <p id="respuesta"></p>
+
+    <script>
+        function busca(){
+            let usuario = $('#usuario').val();
+            $.ajax({
+                url: `https://api.github.com/users/` + usuario,
+                success: function (data) {
+
+                $('#respuesta').html(`
+                        <h2>${data.login}</h2>
+                        <img src='${data.avatar_url}'>
+                        <p>Seguidores: ${data.followers}</p>
+                        <p>Siguiendo: ${data.following}</p>
+                        `)
+                }
+            });            
+        }
+
+    </script>
+</body>
+</html>

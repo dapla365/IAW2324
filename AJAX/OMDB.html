@@ -19,16 +19,16 @@
                 url: `http://www.omdbapi.com/?apikey=${key}&t=${titulo}`,
                 success: function(data){
                     if (data.Response == "True") {
-                    $('#respuesta').html(`
-                <h2>${data.Title}(${data.Year})</h2>
-                <img src='${data.Poster}'>
-                <p>Actores: ${data.Actors}</p>
-                <p>Resumen: ${data.Plot}</p>
-                  `)
-                }else{
-                    $("#respuesta").text("No se pudo obtener pelicula");
-                }
-            },
+                        $('#respuesta').html(`
+                        <h2>${data.Title}(${data.Year})</h2>
+                        <img src='${data.Poster}'>
+                        <p>Actores: ${data.Actors}</p>
+                        <p>Resumen: ${data.Plot}</p>
+                        `)
+                    }else{
+                        $("#respuesta").text("No se pudo obtener pelicula");
+                    }
+                },
                 error: function(){
                     $("#respuesta").text("No se pudo obtener pelicula");
                 }

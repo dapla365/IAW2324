@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Books</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="titulo" placeholder="titulo">
+    <button onclick="busca()">Buscar</button><br><br>
+    <p id="respuesta"></p>
+
+    <script>
+        function busca(){
+            let titulo = $('#titulo').val();
+            let key = 'AIzaSyBGlkTnKgidU1WvpuCHtAZd6U58TCnnT0E';
+            $.ajax({
+                url:`https://www.googleapis.com/books/v1/volumes?q=intitle:${titulo}&key=${key}`,
+                success: function(data) {
+                let resultadoHTML='';
+                    let libros=data.items;
+
+                    if(libros){
+                    libros.forEach(function(libro){
+                        resultadoHTML+=`
+                        <h2>${libro.volumeInfo.title}</h2>
+                        <p>Autor(es): ${libro.volumeInfo.authors}</p>
+                        <p>Sinopsis: ${libro.volumeInfo.description}</p>
+                        <p>Link de compra: <a href='${libro.saleInfo.buyLink}' target='_blank'>Compra aquí</a></p>
+                        `
+                    });
+                    }
+                $('#respuesta').html(resultadoHTML);
+                }
+            })          
+        }
+
+    </script>
+</body>
+</html>
