@@ -13,7 +13,12 @@
         $c = -3.1;
         $d = true;
         $e = array("Ejemplo", "ABCDE");
-        var_dump($a, $b, $c, $d, $e);
+        
+        echo var_dump($a)."<br>";
+        echo var_dump($b)."<br>";
+        echo var_dump($c)."<br>";
+        echo var_dump($d)."<br>";
+        echo var_dump($e);
     ?>
 </body>
 </html>
