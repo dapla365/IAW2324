@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    font-family: 'Nova Square', sans-serif;
+}
+
+#container{
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#game_name{
+    color: white;
+    font-size: 60px;
+    margin: 5px;
+}
+
+#player_turn{
+    color: whitesmoke;
+    font-size: larger;
+    margin: 10px;
+}
+
+#game{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;        
+}
+
+.box{
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.player1_class{
+    background-color: rgb(92, 184, 215);
+}
+
+.player2_class{
+    background-color: lightcoral;
+}
+
+#end_game{
+    display: none;
+}
+
+#winner{
+    color: whitesmoke;
+    font-size: larger;
+}
+
+#button_start_again{
+    width: 200px;
+    height: 50px;
+    font-family: 'Nova Square', sans-serif;
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+    font-size: larger;
+    margin-top: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#button_start_again:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+#child_winner{
+    margin: 10px 0 10px 0;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+}
+
+.verde{
+    background-color: '#70FF60';
+}
