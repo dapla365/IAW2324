@@ -3,6 +3,6 @@
 define('IMG_DIR', 'images/');
 
 $email = 'davidplaza@iesamachado.org';
-$web = 'dapla.thsite.top';
+$web = 'http://dapla.thsite.top';
 
 ?>
