@@ -8,7 +8,7 @@
 <body>
     <h1>FileGetContents</h1>
     <?php
-        $url = 'http://dapla.thsite.php';
+        $url = 'http://dapla.thsite.top/php4/saludo.php';
         $contenido = file_get_contents($url);
 
         if ($contenido === false) {

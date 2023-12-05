@@ -13,20 +13,24 @@
 
         <label for="correo">Correo: </label>
         <input type="email" id="correo" name="correo" placeholder="Correo" required>
+        <button type="submit">Enviar</button>
     </form>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(filter_var($_POST["correo"] , FILTER_VALIDATE_EMAIL)){
-            $correo = mysqli_real_escape_string( $conexion, $_POST["correo"]);
+
+            $correo = htmlspecialchars($_POST["correo"]);
             $nombre = htmlspecialchars($_POST["nombre"]);
+
 
             session_start();
             $_SESSION["nombre"] = $nombre;
             $_SESSION["correo"] = $correo;
-            echo "Sesion creada y valores añadidos.";
-        }else{
-            echo "Tiene que proporcionar un email valido";
-        }
+            echo "Sesion creada y valores añadidos.<br><br>";
+
+            echo session_id();
+
+            header("refresh:5;url=pruebasession2.php");
+
     }
     ?>
 </body>
