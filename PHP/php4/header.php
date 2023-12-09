@@ -9,6 +9,7 @@
     <h1>Header</h1>
     <?php
         header("refresh:5;url=saludo.php");
+        //header("Location: saludo.php");
     ?>
 
     <p>Redirigiendo a saludo.php</p>

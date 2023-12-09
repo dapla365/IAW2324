@@ -21,8 +21,8 @@
             $correo = htmlspecialchars($_POST["correo"]);
             $nombre = htmlspecialchars($_POST["nombre"]);
 
-
             session_start();
+            
             $_SESSION["nombre"] = $nombre;
             $_SESSION["correo"] = $correo;
             echo "Sesion creada y valores añadidos.<br><br>";

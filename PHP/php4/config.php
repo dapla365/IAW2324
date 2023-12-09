@@ -2,7 +2,7 @@
 
 define('IMG_DIR', 'images/');
 
-$email = 'davidplaza@iesamachado.org';
+$email = 'davidplaza03@iesamachado.org';
 $web = 'http://dapla.thsite.top';
 
 ?>
