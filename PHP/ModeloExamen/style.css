@@ -1,0 +1,15 @@
+
+* {
+    box-sizing:border-box;
+}
+
+.obligatorio{
+    display: none; 
+    color: red;
+}
+
+form label{
+	width: 250px;
+	display: inline-block;
+    margin: 3px;
+}
