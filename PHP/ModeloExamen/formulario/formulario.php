@@ -10,56 +10,86 @@
 </head>
 
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
-        <h1>Formulario de contacto</h1>
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $ok = true;
+            if ($_FILES["p_fichero"]["size"] > 2000000) {
+                echo "Tu primer fichero es demasiado grande | 2MG";
+                $ok = false;
+            }
+            if ($_FILES["p_fichero"]["size"] > 2000000) {
+                echo "Tu segundo fichero es demasiado grande | 2MG";
+                $ok = false;
+            }
+            if($ok){
+                $p_fichero = htmlspecialchars($_POST["p_fichero"]);
+                $s_fichero = htmlspecialchars($_POST["s_fichero"]);
+                
+                $ficheroNombre = $_FILES["p_fichero"]["name"];
+                $ficheroTipo = $_FILES["p_fichero"]["type"];
+                $ficheroTmpName = $_FILES["p_fichero"]["tmp_name"];
 
+                $ficheroNombre2 = $_FILES["s_fichero"]["name"];
+                $ficheroTipo2 = $_FILES["s_fichero"]["type"];
+                $ficheroTmpName2 = $_FILES["s_fichero"]["tmp_name"];
+                
+                $carpetaDestino = "ficheros/"; //Carpeta dentro del servidor
+                $rutaDestino = $carpetaDestino . $ficheroNombre; 
+                $rutaDestino2 = $carpetaDestino . $ficheroNombre2; 
+
+                move_uploaded_file($ficheroTmpName, $rutaDestino);
+                move_uploaded_file($ficheroTmpName2, $rutaDestino2);
+
+                echo '<p>Archivos subidos correctamente</p>';
+            }
+        }
+    ?>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault(); validar();">
+        <h1>Formulario de contacto</h1>
 
         <label for="asunto">Asunto*:</label>
         <input type="text" id="asunto" name="asunto" />
-        <span class='obligatorio' id="ObligaAsunto"> Este campo es obligatorio</span><br>
+        <span class='invisible red' id="ObligaAsunto"> Este campo es obligatorio</span><br>
 
         <label for="dni">DNI*:</label>
         <input type="text" id="dni" name="dni" placeholder="11111111A" />
-        <span class='obligatorio' id="ObligaDNI"> Este campo es obligatorio</span><br>
+        <span class='invisible red' id="ObligaDNI"> Este campo es obligatorio</span><br>
 
         <label for="nombre">Nombre*:</label>
         <input type="text" id="nombre" name="nombre" />
-        <span class='obligatorio' id="ObligaNombre"> Este campo es obligatorio</span><br>
-
+        <span class='invisible red' id="ObligaNombre"> Este campo es obligatorio</span><br>
 
         <label for="p_apellido">Primer apellido*:</label>
         <input type="text" id="p_apellido" name="p_apellido" />
-        <span class='obligatorio' id="ObligaPrimerApellido"> Este campo es
+        <span class='invisible red' id="ObligaPrimerApellido"> Este campo es
             obligatorio</span><br>
-
 
         <label for="s_apellido">Segundo apellido:</label>
         <input type="text" id="s_apellido" name="s_apellido" /><br>
 
         <label for="nacimiento">Fecha nacimiento(dd/mm/yyyy)*:</label>
         <input type="date" id="nacimiento" name="nacimiento" />
-        <span class='obligatorio' id="ObligaNacimiento"> Este campo es
+        <span class='invisible red' id="ObligaNacimiento"> Este campo es
             obligatorio</span><br>
 
         <label for="telefono">Teléfono de contacto*:</label>
         <input type="number" id="telefono" name="telefono" />
-        <span class='obligatorio' id="ObligaTelefono"> Este campo es
+        <span class='invisible red' id="ObligaTelefono"> Este campo es
             obligatorio</span><br>
 
         <label for="correo">Correo electrónico(para respuesta):</label>
         <input type="email" id="correo" name="correo" /><br>
+        <span class='invisible red' id="CorreoInvalido"> DNI invalido</span><br>
 
         <label for="domicilio">Domicilio*:</label>
         <input type="text" id="domicilio" name="domicilio" />
-        <span class='obligatorio' id="ObligaDomicilio"> Este campo es
+        <span class='invisible red' id="ObligaDomicilio"> Este campo es
             obligatorio</span><br>
-
 
         <label for="codigo_postal">Código postal*:</label>
         <input type="number" id="codigo_postal" name="codigo_postal" />
-        <span class='obligatorio' id="ObligaCodigoPostal"> Este campo es
+        <span class='invisible red' id="ObligaCodigoPostal"> Este campo es
             obligatorio</span><br>
-
 
         <label for="provincia">Provincias*:</label>
         <select name="provincia" id="provincia" required>
@@ -117,32 +147,28 @@
             <option value="Zamora">Zamora</option>
             <option value="Zaragoza">Zaragoza</option>
         </select>
-        <span class='obligatorio' id="ObligaProvincia"> Este campo es
+        <span class='invisible red' id="ObligaProvincia"> Este campo es
             obligatorio</span><br>
-
 
         <label for="oficina">Oficina*:</label>
         <input type="text" id="oficina" name="oficina" />
-        <span class='obligatorio' id="ObligaOficina"> Este campo es
+        <span class='invisible red' id="ObligaOficina"> Este campo es
             obligatorio</span><br>
-
 
         <label for="info">Información requerida*:</label>
         <input type="textbox" id="info" name="info" />
-        <span class='obligatorio' id="ObligaInfo"> Este campo es obligatorio</span><br>
+        <span class='invisible red' id="ObligaInfo"> Este campo es obligatorio</span><br>
 
 
         <label for="p_fichero">Fichero Anexo I (máximo 2MB):</label>
         <input type="file" id="p_fichero" name="p_fichero" /><br>
 
-
         <label for="s_fichero">Fichero Anexo II (máximo 2MB):</label>
         <input type="file" id="s_fichero" name="s_fichero" /><br><br><br>
 
-
         <input type="checkbox" name="terminos" id="terminos">He leído y acepto la <a href="">política de datos y normas
             de uso *</a>
-        <span class='obligatorio' id="ObligaTerminos"> Este campo es
+        <span class='invisible red' id="ObligaTerminos"> Este campo es
             obligatorio</span><br><br><br>
 
         <button type="submit">Enviar</button>
