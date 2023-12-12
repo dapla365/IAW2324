@@ -29,7 +29,10 @@ function validar() {
 
 
 
-    if(valorGeneral == 4) return true; else return false;
+    if(valorGeneral == 4) {
+        document.form.submit();
+        return true; 
+    }else return false;
 }
 
 function sinCompletar(valor) {

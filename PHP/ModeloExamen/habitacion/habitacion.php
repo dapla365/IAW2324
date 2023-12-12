@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault(); validar();">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="form" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault(); validar();">
         <h1>Selecciona una habitacion</h1>
 
         <label for="nombre">Nombre*:</label>

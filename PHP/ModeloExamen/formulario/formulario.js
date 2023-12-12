@@ -56,7 +56,10 @@ function validar() {
     if (sinCompletar(info)) valorGeneral++; else{ ObligaInfo.classList.remove("invisible"); valorGeneral--;}
     if (terminos.checked) valorGeneral++; else{ ObligaTerminos.classList.remove("invisible"); valorGeneral--;}
 
-    if(valorGeneral == 12) return true; else return false;
+    if(valorGeneral == 12) {
+        document.form.submit();
+        return true; 
+    }else return false;
 }
 
 function sinCompletar(valor) {
