@@ -1,0 +1,17 @@
+
+* {
+    box-sizing:border-box;
+}
+
+.invisible{
+    display: none; 
+}
+
+form label{
+    width: 250px;
+    display: inline-block;
+    margin: 3px;
+}
+.red{
+    color: red;
+}

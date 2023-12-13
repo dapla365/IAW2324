@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social</title>
+    <style>
+        #contenido{
+            margin-top: 10px;
+            border: 1px solid black;
+        }
+        p{
+            padding: 20px;
+            margin: 5px;
+            font-size: large;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid black;
+            width: 200px;
+        }
+        img{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="valor" placeholder="Nueva publicación">
+    <button onclick="add()">Añadir</button>
+    <button onclick="limpiarLocalStorage()">Limpiar Local Storage</button>
+
+    <div id="contenido"></div>
+    <script>
+
+
+        let cadena = getCadena();
+        function getCadena(){
+            let c = JSON.parse(localStorage.getItem("valores"));
+            if(c == null || c == ""){
+                c = new Array("Ejemplo1","Ejemplo2");
+            }
+            localStorage.setItem("valores", JSON.stringify(c));
+            return c;
+        }
+        
+        mostrar();
+        function add(){
+            let nuevo = document.getElementById("valor").value;
+            if(nuevo == null) return;
+            
+            cadena.push(nuevo);
+            localStorage.setItem("valores", JSON.stringify(cadena));
+            mostrar();
+        }
+
+        function limpiarLocalStorage(){
+            localStorage.clear();
+            cadena = new Array("Ejemplo1","Ejemplo2");
+            mostrar();
+        }
+
+        function mostrar(){
+            let html = "";
+            const d = new Date();
+            let day = d.getDate();
+            let hour = d.getHours();
+
+            for(let a=0;a<cadena.length;a++){
+                html += '<p id="'+a+'">'+"Dia:"+day+", Hora:"+hour+"<br>"+cadena[a]+'<img width="30px" onclick="remove(`'+a+'`)" src="https://cdn-icons-png.flaticon.com/512/58/58326.png" alt="papelera"></p>';
+            }
+            document.getElementById("contenido").innerHTML = html;
+        }
+        function remove(id){
+            cadena.splice(id, 1);
+            localStorage.setItem("valores", JSON.stringify(cadena));
+            mostrar();
+        }
+    </script>
+
+</body>
+</html>
