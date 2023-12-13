@@ -32,7 +32,7 @@ function validar() {
     if (sinCompletar(nombre)) valorGeneral++; else{ ObligaNombre.classList.remove("invisible"); valorGeneral--;}
     if (sinCompletar(apellidos)) valorGeneral++; else{ ObligaApellidos.classList.remove("invisible"); valorGeneral--;}
     if (sinCompletar(dia_entrada)) valorGeneral++; else{ ObligaDiaEntrada.classList.remove("invisible"); valorGeneral--;}
-    if (sinCompletar(dias)) valorGeneral++; else{ ObligaDias.classList.remove("invisible"); valorGeneral--;}
+    if (sinCompletar(dias) && dias > 0) valorGeneral++; else{ ObligaDias.classList.remove("invisible"); valorGeneral--;}
 
 
 
