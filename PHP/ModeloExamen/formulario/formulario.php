@@ -11,13 +11,15 @@
 
 <body>
     <?php
+
+        //Compruebo los tamaños de los ficheros desde el lado del servidor para que no sea editable.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $ok = true;
             if ($_FILES["p_fichero"]["size"] > 2000000) {
                 echo "Tu primer fichero es demasiado grande | 2MG";
                 $ok = false;
             }
-            if ($_FILES["p_fichero"]["size"] > 2000000) {
+            if ($_FILES["s_fichero"]["size"] > 2000000) {
                 echo "Tu segundo fichero es demasiado grande | 2MG";
                 $ok = false;
             }
@@ -93,7 +95,6 @@
 
         <label for="provincia">Provincias*:</label>
         <select name="provincia" id="provincia" required>
-            <option value=""></option>
             <option value="Álava/Araba">Álava/Araba</option>
             <option value="Albacete">Albacete</option>
             <option value="Alicante">Alicante</option>
@@ -151,7 +152,12 @@
             obligatorio</span><br>
 
         <label for="oficina">Oficina*:</label>
-        <input type="text" id="oficina" name="oficina" />
+        <select name="oficina" id="oficina" required>
+        <option value="oficina1">Oficina 1</option>
+        <option value="oficina2">Oficina 2</option>
+        <option value="oficina3">Oficina 3</option>
+        <option value="oficina4">Oficina 4</option>
+        </select>
         <span class='invisible red' id="ObligaOficina"> Este campo es
             obligatorio</span><br>
 
