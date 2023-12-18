@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: pkmemerald;
 }
 /***************** FONDO BODY *****************/
 body{
@@ -13,7 +14,7 @@ body{
     background: url('images/background-white-e4e4414b.jpeg') no-repeat;
     background-size:cover;
 }
-.dark{
+#body.dark{
     width: auto;
     background: url('images/background-black-2a5a48d1.jpeg') no-repeat;
     background-size:cover;
@@ -75,10 +76,15 @@ body{
 
 /***************** INPUT *****************/
 input{
+    font-size: large;
     margin-top: 50px;
     padding: 1rem;
     border: 2px solid black;
     border-radius: 0;
+}
+#valor.dark {
+    color: white;
+    background-color: rgb(80, 80, 80);
 }
 
 /***************** POKEMONS *****************/
@@ -90,8 +96,12 @@ input{
     border: 1px solid black;
     background-color: white;
 }
+#names.dark {
+    color: white;
+    background-color: rgb(80, 80, 80);
+}
 #names > div {
-    font-size: smaller;
+    font-size: large;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -105,5 +115,30 @@ input{
 }
 
 #pokemon_table{
-
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    border: 1px solid black;
+    background-color: white;
+}
+#pokemon_table.dark {
+    color: white;
+    background-color: rgb(80, 80, 80);
+}
+#pokemon_table > div {
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    white-space: wrap;
+    width: 75px;
+    text-align: center;
+    align-items: center;
+    margin: 5px;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
 }
