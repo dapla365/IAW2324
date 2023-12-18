@@ -1,4 +1,4 @@
-document.getElementById("dark_button").onclick = function(){
+document.getElementById("dark_button").onclick = function () {
     document.getElementById("dark_button").classList.add('invisible');
     document.getElementById("light_button").classList.remove('invisible');
     document.getElementById("body").classList.add('dark');
@@ -6,7 +6,7 @@ document.getElementById("dark_button").onclick = function(){
     document.getElementById("names").classList.add('dark');
     document.getElementById("pokemon_table").classList.add('dark');
 }
-document.getElementById("light_button").onclick = function(){
+document.getElementById("light_button").onclick = function () {
     document.getElementById("dark_button").classList.remove('invisible');
     document.getElementById("light_button").classList.add('invisible');
     document.getElementById("body").classList.remove('dark');
@@ -15,14 +15,17 @@ document.getElementById("light_button").onclick = function(){
     document.getElementById("pokemon_table").classList.remove('dark');
 }
 
-$(document).keyup(function(event) {
+$(document).keyup(function (event) {
     if ($("#valor").is(":focus") && event.key == "Enter") {
         busca();
+        //fetchKantoPokemon();
     }
 });
 let know_type1, know_type2, know_evolution, know_evolved, know_color, know_habitat, know_generation;
 
-function busca(){
+function buscado() {
+
+
     let pok = document.getElementById('valor').value;
 
     let type1 = document.getElementById("pokemon_type1");
@@ -33,16 +36,16 @@ function busca(){
     let habitat = document.getElementById("pokemon_habitat");
     let generacion = document.getElementById("pokemon_generation");
 
-   
+
     let try_type1, try_type2, try_evolution, try_evolved, try_color, try_habitat, try_generation;
 
     $.ajax({
         method: "GET",
         // data.sprites.front_default   data.forms[0].name      data.types[0].type.name     data.id
-        url: `https://pokeapi.co/api/v2/pokemon/${pok}` 
-      }).done(function(data) {
+        url: `https://pokeapi.co/api/v2/pokemon/${pok}`
+    }).done(function (data) {
         try {
-            $("#pokemon_img").html("<img src="+JSON.stringify(data.sprites.front_default)+" alt='pokemon_img'>");
+            $("#pokemon_img").html("<img src=" + JSON.stringify(data.sprites.front_default) + " alt='pokemon_img'>");
         } catch (error) {
             $("#pokemon_img").text('None');
         }
@@ -77,7 +80,7 @@ function busca(){
             try_habitat = 'None';
         }
         try {
-            try_generation = JSON.stringify(data.past_types);
+            //try_generation = JSON.stringify(data.sprites.versions.generation-i);
         } catch (error) {
             try_generation = 'None';
         }
@@ -91,60 +94,74 @@ function busca(){
         generacion.innerHTML = try_generation;
 
         /* COMPROBACIONES */
-        if(know_type1 == try_type1){
+        if (know_type1 == try_type1) {
             type1.classList.remove('red');
             type1.classList.add('green');
-        }else{
+        } else {
             type1.classList.add('red');
             type1.classList.remove('green');
         }
-        if(know_type2 == try_type2){
+        if (know_type2 == try_type2) {
             type2.classList.remove('red');
             type2.classList.add('green');
-        }else{
+        } else {
             type2.classList.add('red');
             type2.classList.remove('green');
         }
-        if(know_evolution == try_evolution){
+        if (know_evolution == try_evolution) {
             evolution.classList.remove('red');
             typevolutione1.classList.add('green');
-        }else{
+        } else {
             evolution.classList.add('red');
             evolution.classList.remove('green');
         }
-        if(know_evolved == try_evolved){
+        if (know_evolved == try_evolved) {
             evolved.classList.remove('red');
             evolved.classList.add('green');
-        }else{
+        } else {
             evolved.classList.add('red');
             evolved.classList.remove('green');
         }
-        if(know_color == try_color){
+        if (know_color == try_color) {
             color.classList.remove('red');
             color.classList.add('green');
-        }else{
+        } else {
             color.classList.add('red');
             color.classList.remove('green');
         }
-        if(know_habitat == try_habitat){
+        if (know_habitat == try_habitat) {
             habitat.classList.remove('red');
             habitat.classList.add('green');
-        }else{
+        } else {
             habitat.classList.add('red');
             habitat.classList.remove('green');
         }
-        if(know_generation == try_generation){
+        if (know_generation == try_generation) {
             generacion.classList.remove('red');
             generacion.classList.add('green');
-        }else{
+        } else {
             generacion.classList.add('red');
             generacion.classList.remove('green');
         }
 
-      }).fail(function() {
+    }).fail(function () {
         $("#sinrespuesta").text("No se pudo obtener pokemon");
-      });
+    });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* API Select */
 /*
