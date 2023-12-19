@@ -136,16 +136,45 @@ async function getPokemon(num) {
 
 async function load() {
     
-    let text = `<div><img src="${pokedex.img}" alt='pokemon_img'></div>
-    <div id="${pokedex.name}_${pokedex.type1}"></div>
-    <div id="${pokedex.name}_${pokedex.type2}"></div>
-    <div id="${pokedex.name}_${pokedex.evolution}"></div>
-    <div id="${pokedex.name}_${pokedex.evolved}"></div>
-    <div id="${pokedex.name}_${pokedex.color}"></div>
-    <div id="${pokedex.name}_${pokedex.habitat}"></div>
-    <div id="${pokedex.name}_${pokedex.generation}"></div>`;
+    var text_img = document.createElement('div');
+    var text_type1 = document.createElement('div');
+    var text_type2 = document.createElement('div');
+    var text_evolution = document.createElement('div');
+    var text_evolved = document.createElement('div');
+    var text_color = document.createElement('div');
+    var text_habitat = document.createElement('div');
+    var text_generation = document.createElement('div');
+    
 
-    document.getElementById("pokemon_table").innerHTML += text;
+    text_img.innerHTML = `<img src="${pokedex.img}" alt='pokemon_img'>`;
+    text_type1.id = `${pokedex.name}_${pokedex.type1}`;
+    text_type2.id = `${pokedex.name}_${pokedex.type2}`;
+    text_evolution.id = `${pokedex.name}_${pokedex.evolution}`;
+    text_evolved.id = `${pokedex.name}_${pokedex.evolved}`;
+    text_color.id = `${pokedex.name}_${pokedex.color}`;
+    text_habitat.id = `${pokedex.name}_${pokedex.habitat}`;
+    text_generation.id = `${pokedex.name}_${pokedex.generation}`;
+
+    if(document.getElementById("pokemon_table").hasChildNodes()){
+        document.getElementById("pokemon_table").insertBefore(text_generation,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_habitat,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_color,   document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_evolved,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_evolution,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_type2,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_type1,  document.getElementById("pokemon_table").firstChild);
+        document.getElementById("pokemon_table").insertBefore(text_img,  document.getElementById("pokemon_table").firstChild);
+    }else{
+        document.getElementById("pokemon_table").appendChild(text_img);
+        document.getElementById("pokemon_table").appendChild(text_type1);
+        document.getElementById("pokemon_table").appendChild(text_type2);
+        document.getElementById("pokemon_table").appendChild(text_evolution);
+        document.getElementById("pokemon_table").appendChild(text_evolved);
+        document.getElementById("pokemon_table").appendChild(text_color);
+        document.getElementById("pokemon_table").appendChild(text_habitat);
+        document.getElementById("pokemon_table").appendChild(text_generation);
+    }
+
     tried.push(pokedex.name);
     document.getElementById('pokemon_select').replaceChildren(); //Limpiamos lista
 

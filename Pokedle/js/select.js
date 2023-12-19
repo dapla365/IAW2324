@@ -29,7 +29,6 @@ async function change() {
     for (var i = 1; i <= 1000; i++) {
         try {
             if (allPokemons[i].name.includes(valor)) {
-                var opt = document.createElement('div');
                 var opt = `<div id="${allPokemons[i].id}" onclick="busca('${allPokemons[i].name}')"><img src="${allPokemons[i].img}" alt="${allPokemons[i].name}_image">${allPokemons[i].name}</div>`
 
                 select.innerHTML += opt;
