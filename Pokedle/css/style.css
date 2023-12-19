@@ -11,12 +11,12 @@ body{
     justify-items: center;
 
     width: auto;
-    background: url('images/background-white-e4e4414b.jpeg') no-repeat;
+    background: url('../images/background-white-e4e4414b.jpeg') no-repeat;
     background-size:cover;
 }
 #body.dark{
     width: auto;
-    background: url('images/background-black-2a5a48d1.jpeg') no-repeat;
+    background: url('../images/background-black-2a5a48d1.jpeg') no-repeat;
     background-size:cover;
 }
 
@@ -76,6 +76,7 @@ body{
 
 /***************** INPUT *****************/
 input{
+    width: 180px;
     font-size: large;
     margin-top: 50px;
     padding: 1rem;
@@ -86,9 +87,67 @@ input{
     color: white;
     background-color: rgb(80, 80, 80);
 }
+#pokemon_select{
+    margin-top: 235px;
+    position: absolute;
+    width: 180px;
+    background-color: white;
+    text-align: left;
+    border: 2px solid black;
+
+    max-height: 300px;
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-color: rgba(0, 0, 255, 0.5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+#pokemon_select > div{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+#pokemon_select > div:hover{
+    background-color: gray;
+}
+#pokemon_select > div > img{
+    width: 50px;
+}
+
+#pokemon_select.dark{
+    background-color: rgb(80, 80, 80);
+}
+/***************** SCROLL *****************/
+#pokemon_select::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+#pokemon_select::-webkit-scrollbar:vertical {
+    width:auto;
+}
+
+#pokemon_select::-webkit-scrollbar-button:increment,#pokemon_select::-webkit-scrollbar-button {
+    display: none;
+} 
+
+#pokemon_select::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+#pokemon_select::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 22);
+    border-radius: 20px;
+    border: 1.5px solid #0080ff;
+}
+
+#pokemon_select::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
 
 /***************** POKEMONS *****************/
 #names{
+    width: 690px;
     margin: 10px;
     display: flex;
     justify-content: space-around;
@@ -97,7 +156,6 @@ input{
     background-color: white;
 }
 #names.dark {
-    color: white;
     background-color: rgb(80, 80, 80);
 }
 #names > div {
@@ -115,14 +173,15 @@ input{
 }
 
 #pokemon_table{
+    width: 690px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
     border: 1px solid black;
     background-color: white;
 }
 #pokemon_table.dark {
-    color: white;
     background-color: rgb(80, 80, 80);
 }
 #pokemon_table > div {
