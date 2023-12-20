@@ -82,21 +82,93 @@ body{
 }
 
 
+/***************** GENERACIONES *****************/
+#gens{
+    margin-top: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    padding: 5px;
+}
+#gens.dark {
+    background-color: rgb(80, 80, 80);
+}
+input[type="checkbox"][id^="gen"] {
+    display: none;
+}
+#gens > label {
+    cursor: pointer;
+}
+#gens > span{
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+#gens > label > img{
+    margin: 2px;
+    filter: grayscale(100%);
+    transition-property: filter;
+    transition-duration: 0.3s;   
+}
+#gens > label.nogray > img {
+    filter: grayscale(0%);
+    transition-property: filter;
+    transition-duration: 0.3s;   
+}
+#gens img:hover{
+    -ms-transform: scale(1.1); 
+    -webkit-transform: scale(1.1); 
+    transform: scale(1.1); 
+}
+
+/***************** PLAY *****************/
+#play{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(117, 255, 117);
+    padding: 3px;
+    margin: 10px;
+    border: 2px solid black;
+    transition: transform  0.5s;
+}
+#play > img{
+    width: 40px;
+}
+#play:hover{
+    cursor: pointer;
+    background-color: rgb(160, 255, 160);
+    -ms-transform: scale(1.1); 
+    -webkit-transform: scale(1.1); 
+    transform: scale(1.1); 
+    transition: transform  0.5s;
+}
+#play.playing{
+    display: none;
+}
+
 /***************** INPUT *****************/
 input{
+    display: none;
     width: 180px;
     font-size: large;
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 1rem;
     border: 2px solid black;
     border-radius: 0;
+}
+input.playing{
+    display: block;
 }
 #valor.dark {
     color: white;
     background-color: rgb(80, 80, 80);
 }
 #pokemon_select{
-    margin-top: 235px;
+    display: none;
+    margin-top: 294px;
     position: absolute;
     width: 180px;
     background-color: white;
@@ -109,6 +181,10 @@ input{
     scrollbar-color: rgba(0, 0, 255, 0.5) rgba(0, 0, 0, 0);
     scrollbar-width: thin;
 }
+#pokemon_select.playing{
+    display: block;
+}
+
 #pokemon_select > div{
     display: flex;
     align-items: center;
@@ -129,25 +205,20 @@ input{
 #pokemon_select::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-
 #pokemon_select::-webkit-scrollbar:vertical {
     width:auto;
 }
-
 #pokemon_select::-webkit-scrollbar-button:increment,#pokemon_select::-webkit-scrollbar-button {
     display: none;
 } 
-
 #pokemon_select::-webkit-scrollbar:horizontal {
     height: 10px;
 }
-
 #pokemon_select::-webkit-scrollbar-thumb {
     background-color: rgb(216, 216, 22);
     border-radius: 20px;
     border: 1.5px solid #0080ff;
 }
-
 #pokemon_select::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
@@ -157,11 +228,14 @@ input{
 #names{
     width: 690px;
     margin: 10px;
+    display: none;
+    border: 1px solid black;
+    background-color: white;
+}
+#names.playing{
     display: flex;
     justify-content: space-around;
     align-content: center;
-    border: 1px solid black;
-    background-color: white;
 }
 #names.dark {
     background-color: rgb(80, 80, 80);
@@ -179,15 +253,17 @@ input{
     border-bottom: 2px solid black;
     margin-bottom: 3px;
 }
-
 #pokemon_table{
     width: 690px;
+    display: none;
+    border: 1px solid black;
+    background-color: white;
+}
+#pokemon_table.playing{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
-    border: 1px solid black;
-    background-color: white;
 }
 #pokemon_table.dark {
     background-color: rgb(80, 80, 80);
