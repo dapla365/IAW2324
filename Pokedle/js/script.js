@@ -42,7 +42,6 @@ $(function () {
 
     $("#play").click(function (e) {
         let comprobacion = false;
-        let gens = [];
         for(let i=1;i<=8;i++){
             if($(`#gen${i}:checked`).length > 0) {
                 comprobacion = true;

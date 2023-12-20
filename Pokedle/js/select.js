@@ -11,7 +11,7 @@ function filtrar() {
                     }
                 }
             }
-        }catch (error) {
+        } catch (error) {
             //console.log("Error obteniendo filter");
         }
     }
@@ -49,26 +49,47 @@ async function getPokemonName(num) {
         sigue = false;
     }
     if (sigue) {
-
         let res = await fetch(url);
         let pokemon = await res.json();
-
 
         let pokemonID = pokemon["id"];
         let pokemonName = pokemon["name"];
         let pokemonType = pokemon["types"];
         let pokemonImg = pokemon["sprites"]["front_default"];
 
+        res = await fetch(pokemon["species"]["url"]);
+        let pokemonSpecies = await res.json();
+        
+        let pokemonGeneration = pokemonSpecies["generation"]["name"]; // Generacion ✓
 
-        /******************** TIPOS ********************/
-        let type1, type2;
-        type1 = pokemonType[0]["type"]["name"]; // Tipo 1 ✓
-        try {
-            type2 = pokemonType[1]["type"]["name"]; // Tipo 2 ✓
-        } catch (error) {
-            type2 = 'None';
+        let sigue2 = true;
+        if (gens.length > 0) {
+            gens[gens.indexOf(1)] = 'generation-i';
+            gens[gens.indexOf(2)] = 'generation-ii';
+            gens[gens.indexOf(3)] = 'generation-iii';
+            gens[gens.indexOf(4)] = 'generation-iv';
+            gens[gens.indexOf(5)] = 'generation-v';
+            gens[gens.indexOf(6)] = 'generation-vi';
+            gens[gens.indexOf(7)] = 'generation-vii';
+            gens[gens.indexOf(8)] = 'generation-viii';
+
+            if (gens.indexOf(pokemonGeneration) != -1) {
+                sigue2 = true;
+            } else {
+                sigue2 = false;
+            }
         }
+        if (sigue2) {
+            /******************** TIPOS ********************/
+            let type1, type2;
+            type1 = pokemonType[0]["type"]["name"]; // Tipo 1 ✓
+            try {
+                type2 = pokemonType[1]["type"]["name"]; // Tipo 2 ✓
+            } catch (error) {
+                type2 = 'None';
+            }
 
-        allPokemons[num] = { "id": pokemonID, "name": pokemonName, "img": pokemonImg, "type1": type1, "type2": type2 };
+            allPokemons[num] = { "id": pokemonID, "name": pokemonName, "img": pokemonImg, "type1": type1, "type2": type2 };
+        }
     }
 }
