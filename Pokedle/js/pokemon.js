@@ -94,7 +94,7 @@ async function guardarPokemonPokedex(id) {
         pokemonGeneration = pokemonGeneration.replaceAll("v", 'V');
 
         /******************** HABITAT ********************/
-        let pokemonHabitat;
+        let pokemonHabitat = 'None';
         try {
             pokemonHabitat = pokemonSpecies["habitat"]["name"]; // Habitat ✓
         } catch (error) {
@@ -102,8 +102,8 @@ async function guardarPokemonPokedex(id) {
         }
 
         /******************** TIPOS ********************/
-        let type1, type2;
-        type1 = pokemonType[0]["type"]["name"]; // Tipo 1 ✓
+        let type1 = pokemonType[0]["type"]["name"]; // Tipo 1 ✓
+        let type2 = 'None';
         try {
             type2 = pokemonType[1]["type"]["name"]; // Tipo 2 ✓
         } catch (error) {
@@ -237,13 +237,13 @@ function load(id) {
     try {
 
         text_img.innerHTML = `<img src="${pokedex[id].img}" alt='pokemon_img'>`;
-        text_type1.id = `${pokedex[id].name}_${pokedex[id].type1}`;
-        text_type2.id = `${pokedex[id].name}_${pokedex[id].type2}`;
-        text_evolution.id = `${pokedex[id].name}_${pokedex[id].evolution}`;
-        text_evolved.id = `${pokedex[id].name}_${pokedex[id].evolved}`;
-        text_color.id = `${pokedex[id].name}_${pokedex[id].color}`;
-        text_habitat.id = `${pokedex[id].name}_${pokedex[id].habitat}`;
-        text_generation.id = `${pokedex[id].name}_${pokedex[id].generation}`;
+        text_type1.id = `${pokedex[id].name}_type1_${pokedex[id].type1}`;
+        text_type2.id = `${pokedex[id].name}_type2_${pokedex[id].type2}`;
+        text_evolution.id = `${pokedex[id].name}_evolution_${pokedex[id].evolution}`;
+        text_evolved.id = `${pokedex[id].name}_evolved_${pokedex[id].evolved}`;
+        text_color.id = `${pokedex[id].name}_color_${pokedex[id].color}`;
+        text_habitat.id = `${pokedex[id].name}_habitat_${pokedex[id].habitat}`;
+        text_generation.id = `${pokedex[id].name}_generation_${pokedex[id].generation}`;
 
         if (document.getElementById("pokemon_table").hasChildNodes()) {
             document.getElementById("pokemon_table").insertBefore(text_generation, document.getElementById("pokemon_table").firstChild);
@@ -265,13 +265,13 @@ function load(id) {
             document.getElementById("pokemon_table").appendChild(text_generation);
         }
 
-        let type1 = document.getElementById(`${pokedex[id].name}_${pokedex[id].type1}`);
-        let type2 = document.getElementById(`${pokedex[id].name}_${pokedex[id].type2}`);
-        let evolution = document.getElementById(`${pokedex[id].name}_${pokedex[id].evolution}`);
-        let evolved = document.getElementById(`${pokedex[id].name}_${pokedex[id].evolved}`);
-        let color = document.getElementById(`${pokedex[id].name}_${pokedex[id].color}`);
-        let habitat = document.getElementById(`${pokedex[id].name}_${pokedex[id].habitat}`);
-        let generacion = document.getElementById(`${pokedex[id].name}_${pokedex[id].generation}`);
+        let type1 = document.getElementById(`${pokedex[id].name}_type1_${pokedex[id].type1}`);
+        let type2 = document.getElementById(`${pokedex[id].name}_type2_${pokedex[id].type2}`);
+        let evolution = document.getElementById(`${pokedex[id].name}_evolution_${pokedex[id].evolution}`);
+        let evolved = document.getElementById(`${pokedex[id].name}_evolved_${pokedex[id].evolved}`);
+        let color = document.getElementById(`${pokedex[id].name}_color_${pokedex[id].color}`);
+        let habitat = document.getElementById(`${pokedex[id].name}_habitat_${pokedex[id].habitat}`);
+        let generacion = document.getElementById(`${pokedex[id].name}_generation_${pokedex[id].generation}`);
 
         type1.innerHTML = pokedex[id].type1;
         type2.innerHTML = pokedex[id].type2;
