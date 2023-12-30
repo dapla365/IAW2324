@@ -75,7 +75,7 @@ async function guardarPokemonPokedex(id) {
         let pokemon = await res.json();
 
         let pokemonID = pokemon["id"]; // ID ✓
-        let pokemonName = pokemon["name"]; // Nombre ✓
+        let pokemonName = pokemon["species"]["name"]; // Nombre ✓
         let pokemonImg = pokemon["sprites"]["front_default"]; // Imagen ✓
         let pokemonType = pokemon["types"]; // Tipos ✓
 
