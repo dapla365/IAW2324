@@ -81,7 +81,6 @@ body{
     vertical-align: middle;
 }
 
-
 /***************** GENERACIONES *****************/
 #gens{
     margin-top: 50px;
@@ -148,6 +147,49 @@ input[type="checkbox"][id^="gen"] {
 #play.playing{
     display: none;
 }
+/***************** PLAY *****************/
+#retry{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(117, 255, 117);
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    transition: transform  0.5s;
+    font-size: large;
+    font-weight: bold;
+}
+#retry:hover{
+    cursor: pointer;
+    background-color: rgb(160, 255, 160);
+    -ms-transform: scale(1.1); 
+    -webkit-transform: scale(1.1); 
+    transform: scale(1.1); 
+    transition: transform  0.5s;
+}
+#retry.playing{
+    display: none;
+}
+
+/***************** POKEBALL *****************/
+#pokeball{
+    width: 80px;
+    height: 80px;
+}
+#pokeball > img {
+    top: 25%;
+    position: absolute;
+    z-index: 1000;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s infinite linear;
+}
+@keyframes spin {
+	0%  {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}	
+}
 
 /***************** INPUT *****************/
 input{
@@ -184,7 +226,6 @@ input.playing{
 #pokemon_select.playing{
     display: block;
 }
-
 #pokemon_select > div{
     display: flex;
     align-items: center;
@@ -197,10 +238,10 @@ input.playing{
 #pokemon_select > div > img{
     width: 50px;
 }
-
 #pokemon_select.dark{
     background-color: rgb(80, 80, 80);
 }
+
 /***************** SCROLL *****************/
 #pokemon_select::-webkit-scrollbar {
     -webkit-appearance: none;
