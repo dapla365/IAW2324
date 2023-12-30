@@ -273,13 +273,13 @@ function load(id) {
         let habitat = document.getElementById(`${pokedex[id].name}_${pokedex[id].habitat}`);
         let generacion = document.getElementById(`${pokedex[id].name}_${pokedex[id].generation}`);
 
-        type1.innerHTML += pokedex[id].type1;
-        type2.innerHTML += pokedex[id].type2;
-        evolution.innerHTML += pokedex[id].evolution;
-        evolved.innerHTML += pokedex[id].evolved;
-        color.innerHTML += pokedex[id].color;
-        habitat.innerHTML += pokedex[id].habitat;
-        generacion.innerHTML += pokedex[id].generation;
+        type1.innerHTML = pokedex[id].type1;
+        type2.innerHTML = pokedex[id].type2;
+        evolution.innerHTML = pokedex[id].evolution;
+        evolved.innerHTML = pokedex[id].evolved;
+        color.innerHTML = pokedex[id].color;
+        habitat.innerHTML = pokedex[id].habitat;
+        generacion.innerHTML = pokedex[id].generation;
 
 
         /* COMPROBACIONES */
