@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Pokedle - dapla365</title>
     <style>
         @font-face {
@@ -13,37 +14,64 @@
         }
     </style>
 </head>
+
 <body id="body">
-    <img id="logo" src="images/pokedle-logo-c94dab78.png" alt="logo">
+    <img id="logo" src="images/pokedle-logo-c94dab78.png" alt="logo" onClick="window.location.reload();">
     <button id="dark_button"><img id="dark" src="images/luna.png" alt="dark"></button>
     <button id="light_button" class="invisible"><img id="light" src="images/sol.png" alt="light"></button>
-    <script src="script.js"></script>
-<!-- onchange="change(value)" -->
-    <input type="text" id="valor" placeholder="Type Pokemon...">
+    <div id="gens">
+        <span>Gens:</span> 
+        <input type="checkbox" id="gen1" class="inputs"/>
+        <label for="gen1" id="gen1_label"><img src="images/gen1.png" /></label>
+
+        <input type="checkbox" id="gen2" class="inputs"/>
+        <label for="gen2" id="gen2_label"><img src="images/gen2.png" /></label>
+
+        <input type="checkbox" id="gen3" class="inputs"/>
+        <label for="gen3" id="gen3_label"><img src="images/gen3.png" /></label>
+
+        <input type="checkbox" id="gen4" class="inputs"/>
+        <label for="gen4" id="gen4_label"><img src="images/gen4.png" /></label>
+
+        <input type="checkbox" id="gen5" class="inputs"/>
+        <label for="gen5" id="gen5_label"><img src="images/gen5.png" /></label>
+
+        <input type="checkbox" id="gen6" class="inputs"/>
+        <label for="gen6" id="gen6_label"><img src="images/gen6.png" /></label>
+
+        <input type="checkbox" id="gen7" class="inputs"/>
+        <label for="gen7" id="gen7_label"><img src="images/gen7.png" /></label>
+
+        <input type="checkbox" id="gen8" class="inputs"/>
+        <label for="gen8" id="gen8_label"><img src="images/gen8.png" /></label>
+    </div>
+
+    <button id="play"><img src="images/play.png" alt="play"></button>
+    <button class="playing" id="retry">RETRY</button>
+
+    <input type="text" id="valor" onkeyup="change()" autocomplete="off" placeholder="Type Pokemon...">
+    <div id="pokemon_select"></div>
 
     <div id="names">
-            <div>Pokemon</div>
-            <div>Type 1</div>
-            <div>Type 2</div>
-            <div>Evolution Level</div>
-            <div>Fully Evolved</div>
-            <div>Color</div>
-            <div>Habitat</div>
-            <div>Generation</div>
+        <div>Pokemon</div>
+        <div>Type 1</div>
+        <div>Type 2</div>
+        <div>Evolution Level</div>
+        <div>Fully Evolved</div>
+        <div>Color</div>
+        <div>Habitat</div>
+        <div>Generation</div>
     </div>
 
-    <div id="pokemon_table">
-            <div id="pokemon_img"></div>
-            <div id="pokemon_type1"></div>
-            <div id="pokemon_type2"></div>
-            <div id="pokemon_evolution"></div>
-            <div id="pokemon_evolved"></div>
-            <div id="pokemon_color"></div>
-            <div id="pokemon_habitat"></div>
-            <div id="pokemon_generation"></div>
+    <div id="pokemon_table"></div>
+
+    <div id="pokeball">
+        <img id="pokeball-img" class="invisible" src="images/pokeball.png" alt="pokeball">
     </div>
 
-    <p style="color: white; font-weight: bold; background-color: black;" id="sinrespuesta"></p>
+    <script src="js/pokemon.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
