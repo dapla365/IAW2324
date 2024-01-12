@@ -1,12 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+<?php include "components/header.php" ?>
 
 <h2>Iniciar Sesión</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -26,40 +19,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!empty($nombre) && !empty($contrasena)){
         require_once 'components/conexion.php';
 
-        $existe_usuario="SELECT * FROM `usuarios` WHERE `username` LIKE '".$nombre."'";
-        //$consulta_existe=mysqli_query($mysqli,$existe_usuario);
+        $sql_usuario="SELECT * FROM `usuarios` WHERE `username` LIKE '".$nombre."'";
+        $sql_contrasena="SELECT `contrasena` FROM `usuarios` WHERE `username` LIKE '".$nombre."'";
 
-        if ($result = mysqli_query($mysqli, $existe_usuario)) {
-            echo "Returned rows are: " . mysqli_num_rows($result);
-            // Free result set
-            mysqli_free_result($result);
-        }
-        /*if(mysqli_num_rows($consulta_existe)>0){
-            $query_contrasena=`SELECT PASSWORD FROM usuarios WHERE username='$nombre'`;
-            $verifica_contrasena=mysqli_query($mysqli,$query_contrasena);
-            $contrasena_bd=mysqli_fetch_array($verifica_contrasena);
+        $result_user = mysqli_query($mysqli, $sql_usuario);
 
-            if(password_verify($contrasena,$contrasena_bd[0])){
+
+        //echo mysqli_num_rows($result_user);
+        if(mysqli_num_rows($result_user)>0){
+            mysqli_free_result($result_user);
+            //Esta registrado
+
+            $result_pass = mysqli_query($mysqli, $sql_contrasena);
+            $contrasena_bd = mysqli_fetch_array($result_pass, MYSQLI_NUM);
+        
+            if(password_verify($contrasena, $contrasena_bd[0])){
+                mysqli_free_result($result_pass);
+
                 session_set_cookie_params(120);
                 session_start();
                 $_SESSION['usuario']=$nombre;
-                header("Refresh:3; url=https://dapla.thsite.top/proyecto/app/app.php");
-
+                header("Location: https://dapla.thsite.top/proyecto/app/app.php");
+    
                 mysqli_close($mysqli);
-            }
-            else{
+            }else{
+                mysqli_free_result($result_pass);
                 echo "<p><strong class='error_login'>Error: </strong>usuario o contraseña incorrecta.</p>";
             }
-        }
-        else{
+        }else{
+            mysqli_free_result($result_user);
             echo "<p><strong class='error_login'>Error: </strong>usuario o contraseña incorrecta.</p>";
-        }*/
+        }
     }
     else{
         echo "<p><strong class='error_login'>Error: </strong>rellene todos los campos.</p>";
     }
 }
 ?>
-</body>
-</html>
+
+<?php include "components/footer.php" ?>
 

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-</head>
-<body>
+<?php include "components/header.php" ?>
+
+<h2>Registro</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <label for="nombre">Nombre de Usuario:</label>
+    <input type="text" name="nombre" required><br>
+
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" name="contrasena" required><br>
+
+    <input type="submit" value="Registrarse">
+</form>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,16 +36,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h2>Registro</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <label for="nombre">Nombre de Usuario:</label>
-    <input type="text" name="nombre" required><br>
-
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" required><br>
-
-    <input type="submit" value="Registrarse">
-</form>
-
-</body>
-</html>
+<?php include "components/footer.php" ?>

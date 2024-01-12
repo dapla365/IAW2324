@@ -1,20 +1,15 @@
 <?php
-if($_SERVER['HTTP_REFERER'] == "login.php"){
-    echo '<p>LLega bien</p>';
+
+if($_SERVER['HTTP_REFERER'] == 'https://dapla.thsite.top/proyecto/login.php'){
+
 }else{
-    echo '<p>LLega mal</p>';
-    //header('Location:login.php')
+    header("Location: https://dapla.thsite.top/proyecto/login.php");
 }
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>llega</h1>
-</body>
-</html>
+<?php include "../components/header.php" ?>
+
+<h1>APP</h1>
+
+<?php include "../components/footer.php" ?>
