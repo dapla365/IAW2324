@@ -1,14 +1,5 @@
-<?php
-
-if($_SERVER['HTTP_REFERER'] == 'https://dapla.thsite.top/proyecto/login.php'){
-
-}else{
-    header("Location: https://dapla.thsite.top/proyecto/login.php");
-}
-
-?>
-
 <?php include "../components/header.php" ?>
+<?php include "../components/navbar.php" ?>
 
 <h1>APP</h1>
 

@@ -1,0 +1,134 @@
+
+header {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    background-color: #3866f2c4;
+    z-index: 1000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centro{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .centro h1{
+    font-size: 1.7em;
+}
+.nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.nav li {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    user-select: none;
+    margin-right: 20px;
+}
+.nav li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    left: 0;
+    bottom: -6px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+.nav li a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav li:last-child {
+    margin-right: 0;
+}
+.nav a {
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav .toggle_btn{
+    font-size: 1.1em;
+    color: #fff;
+    cursor: pointer;
+}
+.nav li ul{
+    display: none;
+}
+.nav .toggle_btn{
+    display: none;
+}
+.dropdown_menu{
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dropdown_menu li,a {
+    text-decoration: none;
+}
+.dropdown_menu a:hover{
+    color: #3866f2c4;
+}
+.dropdown_menu a {
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.dropdown_menu.open {
+    height: 100px;
+}
+.dropdown_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 992px){
+    .dropdown_menu{
+        display: none;
+    }
+}
+/* Estilos para tablets */
+@media (max-width: 992px){
+    /* Estilos específicos para tablets */
+    .nav li {
+        display: none;
+    }
+    .nav .toggle_btn{
+        display: block;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 576px) {
+    /* Estilos específicos para dispositivos móviles */
+    .dropdown_menu{
+       left: 2rem;
+       width: unset;
+    }
+}

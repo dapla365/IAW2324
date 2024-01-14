@@ -1,10 +1,9 @@
 
 <?php include "components/header.php" ?>
 
-
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Iniciar Sesión</h2>
-    <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Registrate</a></p>
+    <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Regístrate</a></p>
 
     <div class="form_container">
         <div class="form_group">
@@ -19,7 +18,6 @@
         </div>
         <input class="form_submit" type="submit" value="Iniciar Sesión">
     </div>
-</form>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -53,18 +51,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_close($mysqli);
             }else{
                 mysqli_free_result($result_pass);
-                echo "<p><strong class='error_login'>Error: </strong>usuario o contraseña incorrecta.</p>";
+                echo "<p><strong>Error: </strong>usuario o contraseña incorrecta.</p>";
             }
         }else{
             mysqli_free_result($result_user);
-            echo "<p><strong class='error_login'>Error: </strong>usuario o contraseña incorrecta.</p>";
+            echo "<p><strong>Error: </strong>usuario o contraseña incorrecta.</p>";
         }
     }
     else{
-        echo "<p><strong class='error_login'>Error: </strong>rellene todos los campos.</p>";
+        echo "<p><strong>Error: </strong>rellene todos los campos.</p>";
     }
 }
 ?>
+</form>
 
 <?php include "components/footer.php" ?>
 

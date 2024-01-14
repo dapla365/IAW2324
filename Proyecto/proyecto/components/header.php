@@ -9,6 +9,7 @@
     <!-- Bootstrap Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
     <link rel="stylesheet" href="components/style.css">
+    <link rel="stylesheet" href="../components/navbar.css">
     <title>Gestión de incidencias (CRUD)</title>
 </head>
 <body>
