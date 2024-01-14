@@ -1,15 +1,24 @@
 
 <?php include "components/header.php" ?>
 
-<h2>Iniciar Sesión</h2>
+
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <label for="nombre">Nombre de Usuario:</label>
-    <input type="text" name="nombre" required><br>
+    <h2>Iniciar Sesión</h2>
+    <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Registrate</a></p>
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" required><br>
-
-    <input type="submit" value="Iniciar Sesión">
+    <div class="form_container">
+        <div class="form_group">
+            <input type="text" name="nombre" placeholder=" " required>
+            <label for="nombre">Usuario:</label>
+            <span class="form_line"></span>
+        </div>
+        <div class="form_group">
+            <input type="password" name="contrasena" placeholder=" " required>
+            <label for="contrasena">Contraseña:</label>
+            <span class="form_line"></span>
+        </div>
+        <input class="form_submit" type="submit" value="Iniciar Sesión">
+    </div>
 </form>
 
 <?php
