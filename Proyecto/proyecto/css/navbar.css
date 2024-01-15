@@ -1,4 +1,8 @@
 
+.dark{
+    background-color: #333;
+    color: #fff;
+}
 header {
     width: 100%;
     padding: 15px;
@@ -15,7 +19,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 header .centro h1{
     font-size: 1.7em;
 }
@@ -93,7 +96,7 @@ header .centro h1{
     font-weight: bold;
 }
 .dropdown_menu.open {
-    height: 100px;
+    height: 140px;
 }
 .dropdown_menu li{
     padding: 0.7rem;
@@ -104,8 +107,8 @@ header .centro h1{
 .nav li i{
     cursor: pointer;
 }
-.invisible{
-    display: none;
+.dropdown_menu li i{
+    cursor: pointer;
 }
 
 @media (min-width: 992px){

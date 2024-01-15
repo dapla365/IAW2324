@@ -1,17 +1,18 @@
 
 <?php include "components/header.php" ?>
+<link rel="stylesheet" href="css/form.css">
 <div class="body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Iniciar Sesión</h2>
     <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Regístrate</a></p>
 
-    <div class="form_container">
-        <div class="form_group">
+    <div class="form__container">
+        <div class="form__group">
             <input type="text" name="nombre" placeholder=" " required>
             <label for="nombre">Usuario:</label>
             <span class="form_line"></span>
         </div>
-        <div class="form_group">
+        <div class="form__group">
             <input type="password" name="contrasena" placeholder=" " required>
             <label for="contrasena">Contraseña:</label>
             <span class="form_line"></span>

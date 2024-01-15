@@ -1,30 +1,30 @@
 <?php include "components/header.php" ?>
+<link rel="stylesheet" href="css/form.css">
 
-
+<div class="body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Registro</h2>
     <p>¿Ya tienes cuenta? <a href="https://dapla.thsite.top/proyecto/login.php">Iniciar sesión</a></p>
 
-    <div class="form_container">
-        <div class="form_group">
+    <div class="form__container">
+        <div class="form__group">
             <input type="text" name="nombre" placeholder=" " required>
             <label for="nombre">Usuario:</label>
             <span class="form_line"></span>
         </div>
-        <div class="form_group">
+        <div class="form__group">
             <input type="password" name="contrasena_uno" placeholder=" " required>
             <label for="contrasena_uno">Contraseña:</label>
             <span class="form_line"></span>
         </div>
-        <div class="form_group">
+        <div class="form__group">
             <input type="password" name="contrasena_dos" placeholder=" " required>
             <label for="contrasena_dos">Repite contraseña:</label>
             <span class="form_line"></span>
         </div>
         <input class="form_submit" type="submit" value="Regístrate">
     </div>
-
-
+    
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "components/conexion.php";
@@ -70,4 +70,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 </form>
+</div>
 <?php include "components/footer.php" ?>
