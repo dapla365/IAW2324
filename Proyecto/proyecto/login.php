@@ -1,6 +1,6 @@
 
 <?php include "components/header.php" ?>
-
+<div class="body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Iniciar Sesión</h2>
     <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Regístrate</a></p>
@@ -31,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $result_user = mysqli_query($mysqli, $sql_usuario);
 
-
-        //echo mysqli_num_rows($result_user);
         if(mysqli_num_rows($result_user)>0){
             mysqli_free_result($result_user);
             //Esta registrado
@@ -46,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_set_cookie_params(120);
                 session_start();
                 $_SESSION['usuario']=$nombre;
-                header("Location: https://dapla.thsite.top/proyecto/app/app.php");
+                header("Location: https://dapla.thsite.top/proyecto/index.php");
     
                 mysqli_close($mysqli);
             }else{
@@ -64,6 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 </form>
-
+</div>
 <?php include "components/footer.php" ?>
 

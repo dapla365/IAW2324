@@ -51,13 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($mysqli->query($sql) === TRUE) {
                 echo "<p> Registro exitoso. Redirigiendo...</p>";
-                echo "<p> Si no redirige puedes hacer <a href='https://dapla.thsite.top/proyecto/app/app.php'>click aquí</a></p>";
+                echo "<p> Si no redirige puedes hacer <a href='https://dapla.thsite.top/proyecto/index.php'>click aquí</a></p>";
 
                 session_set_cookie_params(120);
                 session_start();
                 $_SESSION['usuario']=$nombre;
 
-                header("Refresh:3; url=https://dapla.thsite.top/proyecto/app/app.php");
+                header("Refresh:3; url=https://dapla.thsite.top/proyecto/index.php");
             } else {
                 echo "Error en el registro: " . $mysqli->error;
             }
