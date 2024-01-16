@@ -49,10 +49,64 @@
         echo "Se ha producido un error al actualizar la incidencia.";
       else
         echo "<script type='text/javascript'>alert('¡Datos de la incidencia actualizados!')</script>";
-    }             
+        header("Refresh:3; url=index.php");
+      } 
+      
+      
+      if(isset($_POST['editar'])) 
+    {
+        $planta = htmlspecialchars($_POST['planta']);
+        $aula = htmlspecialchars($_POST['aula']);
+        $descripcion = htmlspecialchars($_POST['descripcion']);
+        $fecha_alta = htmlspecialchars($_POST['fecha_alta']);
+        $fecha_rev = htmlspecialchars($_POST['fecha_rev']);
+        $fecha_sol = htmlspecialchars($_POST['fecha_sol']);
+        $comentario = htmlspecialchars($_POST['comentario']);
+
+          /* REVISA LAS FECHAS POR SI SON NULL */
+          /* FECHA ALTA */
+          if($fecha_alta == ""){
+            $fecha_alta = 'NULL';
+          }else{
+            $fecha_alta = "'".$fecha_alta."'";
+          }
+          /* FECHA REVISION */
+          if($fecha_rev == ""){
+            $fecha_rev = 'NULL';
+          }else{
+            $fecha_rev = "'".$fecha_rev."'";
+          }
+          /* FECHA SOLUCION */
+          if($fecha_sol == ""){
+            $fecha_sol = 'NULL';
+          }else{
+            $fecha_sol = "'".$fecha_sol."'";
+            if($fecha_rev == "" || $fecha_rev == 'NULL'){
+              $fecha_rev = $fecha_sol;
+            }
+            if($fecha_alta == "" || $fecha_alta == 'NULL'){
+              $fecha_alta = $fecha_sol;
+            }
+          }
+
+        if($planta == "" || $aula == "" || $descripcion == "" || $fecha_alta == "" || $fecha_alta == 'NULL'){
+          echo "<script type='text/javascript'>alert('¡Tiene que completar los campos obligatorios!')</script>";
+        }else{
+          $query = "UPDATE incidencias SET planta = '{$planta}' , aula = '{$aula}' , descripcion = '{$descripcion}', fecha_alta = ".$fecha_alta.", fecha_revision = ".$fecha_rev.", fecha_solucion = ".$fecha_sol.", comentario = '{$comentario}' WHERE id = {$id}";
+          $resultado = mysqli_query($mysqli,$query);
+          if (!$resultado) {
+              echo "Algo ha ido mal añadiendo la incidencia: ". mysqli_error($mysqli);
+          }
+          else
+          {
+            header("Refresh:3; url=index.php");
+            echo "<script type='text/javascript'>alert('¡Incidencia añadida con éxito!')</script>";
+          }   
+        }      
+    }
 ?>
 
-<h1 class="text-center">Actualizar incidencia</h1>
+<h1 class="text-center m-3">Actualizar incidencia</h1>
   <div class="container ">
     <form action="" method="post">
       <div class="form-group">

@@ -16,6 +16,9 @@ darkmode.onclick = function(){
     darkmode.classList.toggle('oscuro');
     document.body.classList.toggle('dark');
     document.getElementById('footer').classList.toggle('dark');
+    document.getElementById('incidencias').classList.toggle('dark');
+    document.getElementById('incidencias_pendientes').classList.toggle('dark');
+    document.getElementById('incidencias_completadas').classList.toggle('dark');
     const isDark = darkmode.classList.contains('oscuro');
 
     darkmode.classList = isDark 
@@ -27,6 +30,10 @@ darkmode2.onclick = function(){
     darkmode2.classList.toggle('oscuro');
     document.body.classList.toggle('dark');
     document.getElementById('footer').classList.toggle('dark');
+    document.getElementById('incidencias').classList.toggle('dark');
+    document.getElementById('incidencias_pendientes').classList.toggle('dark');
+    document.getElementById('incidencias_completadas').classList.toggle('dark');
+    
     const isDark = darkmode2.classList.contains('oscuro');
 
     darkmode2.classList = isDark 

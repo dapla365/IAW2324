@@ -21,6 +21,13 @@ header {
 }
 header .centro h1{
     font-size: 1.7em;
+    margin-bottom: 0;
+}
+header .centro h1 a{
+    color: #fff;
+}
+header .centro h1 a:hover{
+    cursor: pointer;
 }
 .nav{
     list-style-type: none;

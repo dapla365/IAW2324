@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             if(password_verify($contrasena, $contrasena_bd[0])){
                 mysqli_free_result($result_pass);
 
-                session_set_cookie_params(120);
+                session_set_cookie_params(360);
                 session_start();
                 $_SESSION['usuario']=$nombre;
                 header("Location: https://dapla.thsite.top/proyecto/index.php");

@@ -14,11 +14,11 @@
             
 ?>
 
+
 <div class="container">
-<h1 class="text-center m-3" >Incidencias</h1>
-<a href="incidencias_completadas.php" id="incidencias_completadas" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-check"></i> Incidencia resueltas (<?php echo $completadas; ?>)</a>
-<a href="incidencias_pendientes.php" id="incidencias_pendientes" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-x"></i> Incidencias pendientes (<?php echo $pendientes; ?>)</a>    
-<a href="create.php" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-plus"></i></a>  
+  <h1 class="text-center m-3" >Incidencias resueltas</h1>
+     <a href="index.php" id="incidencias" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard"></i> Incidencias (<?php echo $total; ?>)</a>
+     <a href="incidencias_pendientes.php" id="incidencias_pendientes" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-x"></i> Incidencia pendientes (<?php echo $pendientes; ?>)</a>
 
       <table class="table table-striped table-bordered table-hover">
           <thead class="table-dark">
@@ -39,7 +39,7 @@
  
           <?php
 
-            $query="SELECT * FROM `incidencias`";               
+            $query="SELECT * FROM `incidencias` WHERE fecha_solucion IS NOT NULL";               
             $vista_incidencias= mysqli_query($mysqli,$query);
 
             while($row = mysqli_fetch_assoc($vista_incidencias)){
@@ -51,7 +51,6 @@
               $fecha_rev = $row['fecha_revision'];        
               $fecha_sol = $row['fecha_solucion'];        
               $comentario = $row['comentario']; 
-
               echo "<tr >";
               echo " <th scope='row' >{$id}</th>";
               echo " <td > {$planta}</td>";
@@ -71,5 +70,7 @@
             </tbody>
         </table>
   </div>
-
+  <div class="container text-center mt-5">
+    <a href="index.php" class="btn btn-warning mt-5"> Volver </a>
+  </div>
 <?php include "components/footer.php" ?>

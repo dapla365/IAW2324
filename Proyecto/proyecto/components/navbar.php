@@ -1,5 +1,5 @@
 <?php
-    session_set_cookie_params(120);
+    session_set_cookie_params(360);
     session_start();
     if(isset($_SESSION['usuario'])){
         $usuario=$_SESSION['usuario'];
@@ -13,7 +13,7 @@
 
 <header>
     <div class="centro">
-        <h1>Incidencias</h1>
+        <h1><a href="index.php">Incidencias</a></h1>
         <div class="nav">
             <li><a href="index.php"><i class="bi bi-person-fill"></i> <?php echo "$usuario"?></a></li>
             <li><i id="darkmode" class="bi bi-moon-fill"></i></li>
