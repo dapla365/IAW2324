@@ -1,7 +1,30 @@
 .footer{
     color: #fff;
 }
-
-#incidencias{
-    color: #fff;
+.table {
+    --bs-table-bg: none;
+    --bs-table-color: none;
+    --bs-table-striped-color: none;
+    --bs-table-hover-color: none;
 }
+.dark_th{
+    --bs-table-bg: #3866f2c4; 
+    background-color: #3866f2c4;
+    color: #fff;
+    --bs-table-color: #fff;
+    --bs-table-hover-color: none;
+    --bs-table-striped-color: none;
+    --bs-table-border-color: none;
+    border-color: none;
+}
+.dark_tr{
+    --bs-table-bg: #5757577e;
+    background-color: #5757577e;
+    color: #fff;
+    --bs-table-color: #fff;
+    --bs-table-hover-color: none;
+    --bs-table-striped-color: none;
+    --bs-table-border-color: none;
+    border-color: none;
+}
+

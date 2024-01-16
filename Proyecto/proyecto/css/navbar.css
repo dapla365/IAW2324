@@ -2,6 +2,7 @@
 .dark{
     background-color: #333;
     color: #fff;
+    border-color: #fff;
 }
 header {
     width: 100%;

@@ -18,7 +18,7 @@
 <h1 class="text-center m-3" >Incidencias</h1>
 <a href="incidencias_completadas.php" id="incidencias_completadas" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-check"></i> Incidencia resueltas (<?php echo $completadas; ?>)</a>
 <a href="incidencias_pendientes.php" id="incidencias_pendientes" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-x"></i> Incidencias pendientes (<?php echo $pendientes; ?>)</a>    
-<a href="create.php" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-plus"></i></a>  
+<a href="create.php" id="incidencias_create" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-plus"></i></a>  
 
       <table class="table table-striped table-bordered table-hover">
           <thead class="table-dark">
@@ -35,7 +35,7 @@
             </tr>  
           </thead>
             <tbody>
-              <tr>
+
  
           <?php
 
@@ -52,7 +52,7 @@
               $fecha_sol = $row['fecha_solucion'];        
               $comentario = $row['comentario']; 
 
-              echo "<tr >";
+              echo "<tr>";
               echo " <th scope='row' >{$id}</th>";
               echo " <td > {$planta}</td>";
               echo " <td > {$aula}</td>";

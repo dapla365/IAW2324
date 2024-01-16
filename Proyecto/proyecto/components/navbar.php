@@ -27,5 +27,5 @@
         </div>
     </div>
 </header>
-<script src="components/navbar.js"></script>
+
 
