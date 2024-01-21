@@ -22,7 +22,6 @@
       <table class="table table-striped table-bordered table-hover">
           <thead class="table-dark">
             <tr>
-              <th class="text-center" scope="col">ID</th>
               <th class="text-center" scope="col">Planta</th>
               <th class="text-center" scope="col">Aula</th>
               <th class="text-center" scope="col">Descripción</th>
@@ -66,7 +65,6 @@
               }
 
               echo "<tr >";
-              echo " <th scope='row' >{$id}</th>";
               echo " <td > {$planta}</td>";
               echo " <td > {$aula}</td>";
               echo " <td >{$descripcion} </td>";

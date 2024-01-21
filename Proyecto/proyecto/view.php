@@ -74,5 +74,4 @@
   <div class="container text-center mt-5">
     <a href="index.php" class="btn btn-warning mt-5"> Volver </a>
   </div>
-
 <?php include "components/footer.php" ?>

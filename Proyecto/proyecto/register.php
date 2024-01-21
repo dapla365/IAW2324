@@ -1,10 +1,9 @@
 <?php include "components/header.php" ?>
-<link rel="stylesheet" href="css/form.css">
 
 <div class="body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Registro</h2>
-    <p>¿Ya tienes cuenta? <a href="https://dapla.thsite.top/proyecto/login.php">Iniciar sesión</a></p>
+    <p>¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 
     <div class="form__container">
         <div class="form__group">
@@ -55,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 session_set_cookie_params(360);
                 session_start();
+                //$_SESSION['id']= array('tema'=>'white');
+                $_SESSION['darkmode']='white';
                 $_SESSION['usuario']=$nombre;
 
                 header("Refresh:3; url=index.php");

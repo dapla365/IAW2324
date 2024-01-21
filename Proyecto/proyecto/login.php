@@ -1,10 +1,10 @@
 
 <?php include "components/header.php" ?>
-<link rel="stylesheet" href="css/form.css">
+
 <div class="body">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2>Iniciar Sesión</h2>
-    <p>¿Aún no tienes cuenta? <a href="https://dapla.thsite.top/proyecto/register.php">Regístrate</a></p>
+    <p>¿Aún no tienes cuenta? <a href="register.php">Regístrate</a></p>
 
     <div class="form__container">
         <div class="form__group">
@@ -44,8 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 session_set_cookie_params(360);
                 session_start();
+               //$_SESSION['id']= array('tema'=>'white');
+                $_SESSION['darkmode']='white';
                 $_SESSION['usuario']=$nombre;
-                header("Location: https://dapla.thsite.top/proyecto/index.php");
+                header("Location: index.php");
     
                 mysqli_close($mysqli);
             }else{

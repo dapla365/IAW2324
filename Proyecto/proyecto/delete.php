@@ -8,7 +8,7 @@
          $id= htmlspecialchars($_GET['eliminar']);
          $query = "DELETE FROM `incidencias` WHERE `id` = {$id}"; 
          $delete_query= mysqli_query($mysqli, $query);
-         header("Location: https://dapla.thsite.top/proyecto/index.php");
+         header("Location: index.php");
      }
 ?>
 <?php include "components/footer.php" ?>

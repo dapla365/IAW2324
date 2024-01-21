@@ -86,9 +86,13 @@ input:focus ~ .form_line,
 input:not(:placeholder-shown) ~ .form_line{
     transform: scale(1);
 }
+
 @media (max-width:425px) {
     form h2{
         font-size: 1.8rem;
+    }
+    .container{
+        max-width: 100%;
     }
 }
 
