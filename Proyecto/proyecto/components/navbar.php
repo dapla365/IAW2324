@@ -15,7 +15,7 @@
     <div class="centro">
         <h1><a href="index.php">Incidencias</a></h1>
         <div class="nav">
-            <li><a href="index.php"><i class="bi bi-person-fill"></i> <?php echo "$usuario"?></a></li>
+            <li><a href="usuarios.php"><i class="bi bi-person-fill"></i> <?php echo "$usuario"?></a></li>
             <li><i id="darkmode" class="<?php
                 if($_SESSION['darkmode'] == 'dark'){
                     echo 'bi bi-brightness-high-fill';
