@@ -14,20 +14,20 @@
               <th  scope="col">Fecha revisión</th>
               <th  scope="col">Fecha solución</th>
               <th  scope="col">Comentario</th>
+              <th  scope="col">Usuario</th>
         </tr>  
       </thead>
         <tbody>
           <tr>
                
             <?php
-              require_once 'components/conexion.php';
 
               if (isset($_GET['incidencia_id'])) {
-                  $incidenciaid = htmlspecialchars($_GET['incidencia_id']); 
-                  $query="SELECT * FROM `incidencias` WHERE `id` = {$incidenciaid} LIMIT 1";  
-                  $vista_incidencias= mysqli_query($mysqli,$query);            
+                  $a = htmlspecialchars($_GET['incidencia_id']); 
+                  $a="SELECT * FROM `incidencias` WHERE `id` = {$a} LIMIT 1";  
+                  $a= mysqli_query($mysqli,$a);            
 
-                  while($row = mysqli_fetch_assoc($vista_incidencias))
+                  while($row = mysqli_fetch_assoc($a))
                   {
                     $id = $row['id'];                
                     $planta = $row['planta'];        
@@ -37,6 +37,7 @@
                     $fecha_rev = $row['fecha_revision'];        
                     $fecha_sol = $row['fecha_solucion'];       
                     $comentario = $row['comentario'];
+                    $usuario = $row['usuario']; 
 
               /* DAR FORMATO FECHA */
               if($fecha_alta != ""){
@@ -62,6 +63,7 @@
                         echo " <td >{$fecha_rev} </td>";
                         echo " <td >{$fecha_sol} </td>";
                         echo " <td >{$comentario} </td>";
+                        echo " <td >{$usuario} </td>";
                         echo " </tr> ";
                   }
                 }

@@ -64,6 +64,16 @@
             
         }
     }
+    function secureDelete(usuario, id) {
+        if(confirm("¿Confirmas que quieres eliminar al usuario "+usuario+"?")) {
+            location.href = 'delete_rol.php?eliminar='+id;
+        }
+    }
+            
+            
+            
+            
+            
 
 </script>
 

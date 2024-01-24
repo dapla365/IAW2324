@@ -1,9 +1,4 @@
 
-/*.dark{
-    background-color: #333;
-    color: #fff;
-    border-color: #fff;
-}*/
 header {
     width: 100%;
     padding: 15px;
@@ -118,6 +113,7 @@ header .centro h1 a:hover{
 .dropdown_menu li i{
     cursor: pointer;
 }
+
 
 @media (min-width: 992px){
     .dropdown_menu{

@@ -45,7 +45,6 @@
         <input type="submit" name="crear" class="btn btn-primary mt-2" value="Añadir">
       </div>
 <?php 
-require_once 'components/conexion.php';
   if(isset($_POST['crear'])) 
     {
         $planta = htmlspecialchars($_POST['planta']);
@@ -85,9 +84,9 @@ require_once 'components/conexion.php';
         if($planta == "" || $aula == "" || $descripcion == "" || $fecha_alta == "" || $fecha_alta == 'NULL'){
           echo "<p><strong>Error: </strong>¡Tiene que completar los campos obligatorios!</p>";
         }else{
-          $query = "INSERT INTO `incidencias` (`planta`, `aula`, `descripcion`, `fecha_alta`,`fecha_revision`,`fecha_solucion`,`comentario`) VALUES ('{$planta}','{$aula}','{$descripcion}',".$fecha_alta.", ".$fecha_rev.",". $fecha_sol.",'{$comentario}')";
-          $resultado = mysqli_query($mysqli,$query);
-          if (!$resultado) {
+          $a = "INSERT INTO `incidencias` (`planta`, `aula`, `descripcion`, `fecha_alta`,`fecha_revision`,`fecha_solucion`,`comentario`, `usuario`) VALUES ('{$planta}','{$aula}','{$descripcion}',".$fecha_alta.", ".$fecha_rev.",". $fecha_sol.",'{$comentario}', '{$user_username}')";
+          $a = mysqli_query($mysqli,$a);
+          if (!$a) {
               echo "<p><strong>Error: </strong>Algo ha ido mal añadiendo la incidencia: ". mysqli_error($mysqli)."</p>";
           }
           else

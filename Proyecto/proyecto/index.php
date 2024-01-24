@@ -1,18 +1,5 @@
 <?php include "components/header.php" ?>
 <?php include "components/navbar.php" ?>
-<?php
-            require_once 'components/conexion.php';
-            $count_todas = "SELECT COUNT(*) as total FROM `incidencias`";               
-            $count_completadas = "SELECT COUNT(*) as completadas FROM `incidencias` WHERE fecha_solucion IS NOT NULL";  
-            $count_pendientes = "SELECT COUNT(*) as pendientes FROM `incidencias` WHERE fecha_solucion IS NULL";                            
-            $count_inc_todas = mysqli_query($mysqli,$count_todas);
-            $count_inc_completadas = mysqli_query($mysqli,$count_completadas);
-            $count_inc_pendientes = mysqli_query($mysqli,$count_pendientes);
-            $total = mysqli_fetch_assoc($count_inc_todas)['total'];
-            $completadas = mysqli_fetch_assoc($count_inc_completadas)['completadas'];
-            $pendientes = mysqli_fetch_assoc($count_inc_pendientes)['pendientes'];
-            
-?>
 
 <div class="container">
 <h1 class="text-center m-3" >Incidencias</h1>
@@ -30,6 +17,7 @@
               <th class="text-center" scope="col">Fecha revisión</th>
               <th class="text-center" scope="col">Fecha solución</th>
               <th class="text-center" scope="col">Comentario</th>
+              <th class="text-center" scope="col">Usuario</th>
               <th class="text-center" scope="col" colspan="3">Operaciones</th>
             </tr>  
           </thead>
@@ -50,6 +38,7 @@
               $fecha_rev = $row['fecha_revision'];        
               $fecha_sol = $row['fecha_solucion'];        
               $comentario = $row['comentario']; 
+              $usuario = $row['usuario']; 
 
               /* DAR FORMATO FECHA */
               if($fecha_alta != ""){
@@ -73,6 +62,7 @@
               echo " <td >{$fecha_rev} </td>";
               echo " <td >{$fecha_sol} </td>";
               echo " <td >{$comentario} </td>";
+              echo " <td >{$usuario} </td>";
               echo " <td class='text-center'> <a href='view.php?incidencia_id={$id}' class='btn btn-primary'> <i class='bi bi-eye'></i> Ver</a> </td>";
               echo " <td class='text-center' > <a href='update.php?editar&incidencia_id={$id}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
               echo " <td class='text-center'>  <a href='delete.php?eliminar={$id}' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</a> </td>";

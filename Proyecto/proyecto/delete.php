@@ -2,12 +2,11 @@
 <?php include "components/navbar.php" ?>
 
 <?php 
-    require_once 'components/conexion.php';
      if(isset($_GET['eliminar']))
      {
-         $id= htmlspecialchars($_GET['eliminar']);
-         $query = "DELETE FROM `incidencias` WHERE `id` = {$id}"; 
-         $delete_query= mysqli_query($mysqli, $query);
+         $a= htmlspecialchars($_GET['eliminar']);
+         $a = "DELETE FROM incidencias WHERE id = {$a}"; 
+         $a= mysqli_query($mysqli, $a);
          header("Location: index.php");
      }
 ?>
