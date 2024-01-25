@@ -4,9 +4,9 @@
 <?php 
      if(isset($_GET['eliminar']))
      {
-        if($nivel > 5){      
+        if($user_nivel > 5){      
             $a= htmlspecialchars($_GET['eliminar']);
-            $a = "DELETE FROM usuarios WHERE id = {$a}"; 
+            $a= "DELETE FROM usuarios WHERE id = '{$a}'"; 
             $a= mysqli_query($mysqli, $a);
         }
          header("Location: usuarios.php");

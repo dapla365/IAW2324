@@ -1,7 +1,7 @@
 <?php include "components/header.php" ?>
 <?php include "components/navbar.php" ?>
 
-<h1 class="text-center m-3">Añadir incidencia</h1>
+<h2 class="text-center m-3">Añadir incidencia</h2>
 <div class="centrar">
   <div class="contenedor">
     <form action="" method="post">

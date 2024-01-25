@@ -19,3 +19,18 @@
     --bs-table-border-color: none;
     border-color: none;
 }
+header h1, header a:hover, #salir:hover{
+    color:  #fff;
+}
+header a{
+    color:  #ffffffb6;
+}
+.nav1{
+    border-bottom: 1px solid #ffffffb6;
+}
+#salir{
+    border: 1px solid #ffffffb6;
+}
+.nav2 li a::after {
+    background: #fff;
+}

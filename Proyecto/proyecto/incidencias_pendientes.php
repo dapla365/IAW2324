@@ -2,9 +2,7 @@
 <?php include "components/navbar.php" ?>
 
 <div class="container">
-  <h1 class="text-center m-3" >Incidencias pendientes</h1>
-     <a href="index.php" id="incidencias" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard"></i> Incidencias (<?php echo $total; ?>)</a>
-     <a href="incidencias_completadas.php" id="incidencias_completadas" class='btn btn-outline-dark mb-2'> <i class="bi bi-clipboard-x"></i> Incidencia completadas (<?php echo $completadas; ?>)</a>
+  <h2 class="text-center m-3" >Incidencias pendientes (<?php echo $pendientes; ?>)</h2>
 
       <table class="table table-striped table-bordered table-hover">
           <thead class="table-dark">
@@ -17,7 +15,11 @@
               <th class="text-center" scope="col">Fecha solución</th>
               <th class="text-center" scope="col">Comentario</th>
               <th class="text-center" scope="col">Usuario</th>
-              <th class="text-center" scope="col" colspan="3">Operaciones</th>
+              <?php
+              if($user_nivel >= 5){
+                echo "<th class='text-center' scope='col' colspan='3'>Operaciones</th>";
+              }
+              ?>
             </tr>  
           </thead>
             <tbody>
@@ -25,10 +27,10 @@
  
           <?php
 
-            $query="SELECT * FROM `incidencias` WHERE fecha_solucion IS NULL";               
-            $vista_incidencias= mysqli_query($mysqli,$query);
+            $q="SELECT * FROM incidencias WHERE fecha_solucion IS NULL";               
+            $q= mysqli_query($mysqli,$q);
 
-            while($row = mysqli_fetch_assoc($vista_incidencias)){
+            while($row = mysqli_fetch_assoc($q)){
               $id = $row['id'];                
               $planta = $row['planta'];        
               $aula = $row['aula'];         
@@ -41,19 +43,19 @@
 
               /* DAR FORMATO FECHA */
               if($fecha_alta != ""){
-                $fecha_alta_array = explode("-",$fecha_alta);
-                $fecha_alta = $fecha_alta_array[2].'/'.$fecha_alta_array[1].'/'.$fecha_alta_array[0];
+                $a = explode("-",$fecha_alta);
+                $fecha_alta = $a[2].'/'.$a[1].'/'.$a[0];
               }
               if($fecha_rev != ""){
-                $fecha_rev_array = explode("-",$fecha_rev);
-                $fecha_rev = $fecha_rev_array[2].'/'.$fecha_rev_array[1].'/'.$fecha_rev_array[0];
+                $b = explode("-",$fecha_rev);
+                $fecha_rev = $b[2].'/'.$b[1].'/'.$b[0];
               }
               if($fecha_sol != ""){
-                $fecha_sol_array = explode("-",$fecha_sol);
-                $fecha_sol = $fecha_sol_array[2].'/'.$fecha_sol_array[1].'/'.$fecha_sol_array[0];
+                $c = explode("-",$fecha_sol);
+                $fecha_sol = $c[2].'/'.$c[1].'/'.$c[0];
               }
 
-              echo "<tr >";
+              echo "<tr>";
               echo " <td > {$planta}</td>";
               echo " <td > {$aula}</td>";
               echo " <td >{$descripcion} </td>";
@@ -62,9 +64,12 @@
               echo " <td >{$fecha_sol} </td>";
               echo " <td >{$comentario} </td>";
               echo " <td >{$usuario} </td>";
-              echo " <td class='text-center'> <a href='view.php?incidencia_id={$id}' class='btn btn-primary'> <i class='bi bi-eye'></i> Ver</a> </td>";
-              echo " <td class='text-center' > <a href='update.php?editar&incidencia_id={$id}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
-              echo " <td class='text-center'>  <a href='delete.php?eliminar={$id}' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</a> </td>";
+
+              if($user_nivel >= 5){
+                echo " <td class='text-center'> <a href='view.php?incidencia_id={$id}' class='btn btn-primary'> <i class='bi bi-eye'></i> Ver</a> </td>";
+                echo " <td class='text-center' > <a href='update.php?editar&incidencia_id={$id}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
+                echo " <td class='text-center'>  <a href='delete.php?eliminar={$id}' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</a> </td>";
+              }
               echo " </tr> ";
                   }  
                  ?>

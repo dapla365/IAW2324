@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .contenedor{
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -18,25 +17,12 @@
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
 }
-.form-label{
+.form-label, .form-check-label{
     margin-top: 0.5rem;
     margin-bottom: 0.2rem;
 }
-
-.form-controol{
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: var(--bs-body-bg);
-    background-clip: padding-box;
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: var(--bs-border-radius);
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.form-check-input{
+    margin-top: 0.8rem;
 }
 input[type='checkbox'] { 
     margin-left: 10%;
@@ -44,4 +30,4 @@ input[type='checkbox'] {
     cursor: default;
     appearance: auto;
     box-sizing: border-box;
- }
+}

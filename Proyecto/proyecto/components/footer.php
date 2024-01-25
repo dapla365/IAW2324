@@ -69,11 +69,6 @@
             location.href = 'delete_rol.php?eliminar='+id;
         }
     }
-            
-            
-            
-            
-            
 
 </script>
 

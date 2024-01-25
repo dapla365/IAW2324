@@ -3,14 +3,14 @@
 
 <div class="centrar">
 <div class="user-container">
-<h1 class="text-center m-3" >Usuarios</h1>
+<h2 class="text-center m-3" >Usuarios</h2>
 <table class="table table-striped table-bordered table-hover">
           <thead class="table-dark">
             <tr>
-                <?php if($nivel > 5){echo '<th class="text-center" scope="col">ID</th>';}?>
+                <?php if($user_nivel > 5){echo '<th class="text-center" scope="col">ID</th>';}?>
                 <th class="text-center" scope="col">Nombre</th>
                 <th class="text-center" scope="col">Rol</th>
-                <?php if($nivel > 5){echo "<th class='text-center' scope='col' colspan='2'>Operaciones</th>";}?>
+                <?php if($user_nivel > 5){echo "<th class='text-center' scope='col' colspan='2'>Operaciones</th>";}?>
                 
             </tr>  
           </thead>
@@ -18,31 +18,31 @@
 
         <?php
 
-            $query="SELECT * FROM `usuarios`";     
-            $vista_usuarios = mysqli_query($mysqli, $query);
+            $a="SELECT * FROM `usuarios`";     
+            $a = mysqli_query($mysqli, $a);
 
-            while($row = mysqli_fetch_assoc($vista_usuarios)){
-              $id_user = $row['id'];                
-              $username_user = $row['username'];     
-              if($usuario != $username_user){
-                $rol_user = $row['rol'];  
+            while($row = mysqli_fetch_assoc($a)){
+              $id = $row['id'];                
+              $username = $row['username'];     
+              if($user_username != $username){
+                $rol = $row['rol'];  
 
-                $query_rol="SELECT `nombre` FROM `roles` WHERE id=$rol_user";          
-                $vista_roles = mysqli_query($mysqli, $query_rol);
-                $rol_user_name = mysqli_fetch_assoc($vista_roles);
+                $b="SELECT `nombre` FROM `roles` WHERE id=$rol";          
+                $b = mysqli_query($mysqli, $b);
+                $b = mysqli_fetch_assoc($b);
 
-                $rol_user_name = ucfirst(mb_strtolower($rol_user_name['nombre']));
+                $rol = ucfirst(mb_strtolower($b['nombre']));
 
                 echo "<tr>";
-                if($nivel > 5){
-                  echo "<td class='text-center'> {$id_user}</td>";
+                if($user_nivel > 5){
+                  echo "<td class='text-center'> {$id}</td>";
                 }
-                echo "<td class='text-center'> {$username_user}</td>";
-                echo "<td class='text-center'> {$rol_user_name}</td>";
+                echo "<td class='text-center'> {$username}</td>";
+                echo "<td class='text-center'> {$rol}</td>";
                 
-                if($nivel > 5){
-                  echo "<td class='text-center'>  <a href='editar_rol.php?editorid={$id_user}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
-                  echo "<td class='text-center'>  <button onClick='secureDelete(`$username_user`,`$id_user`)' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</button> </td>";
+                if($user_nivel > 5){
+                  echo "<td class='text-center'>  <a href='editar_rol.php?editorid={$id}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
+                  echo "<td class='text-center'>  <button onClick='secureDelete(`$username`,`$id`)' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</button> </td>";
                 }
                
                 echo "</tr> ";

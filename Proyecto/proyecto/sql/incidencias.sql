@@ -7,7 +7,7 @@ CREATE TABLE incidencias (
     fecha_revision DATE,
     fecha_solucion DATE,
     comentario TEXT,
-    usuario INT NOT NULL
+    usuario VARCHAR(20) NOT NULL
 );
 
 ALTER TABLE incidencias ADD CONSTRAINT USUARIO FOREIGN KEY (usuario) REFERENCES usuarios(id) ON DELETE RESTRICT ON UPDATE RESTRICT;

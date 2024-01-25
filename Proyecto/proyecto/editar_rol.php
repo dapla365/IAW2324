@@ -1,6 +1,10 @@
 <?php include "components/header.php" ?>
 <?php include "components/navbar.php" ?>
 <?php 
+      if($user_nivel <= 5){
+        header("Location: usuarios.php");
+      }
+
        if(isset($_GET['editorid']))
         {
           $editorid = htmlspecialchars($_GET['editorid']); 
@@ -8,11 +12,11 @@
         $a="SELECT * FROM usuarios WHERE id=$editorid";     
         $a = mysqli_query($mysqli, $a);
 
-        while($a = mysqli_fetch_assoc($a)){
-          $id = $a['id'];                
-          $username = $a['username'];     
-          if($usuario != $username){
-            $rol = $a['rol'];  
+        while($row = mysqli_fetch_assoc($a)){
+          $id = $row['id'];                
+          $username = $row['username'];     
+          if($user_username != $username){
+            $rol = $row['rol'];  
 
             $b="SELECT `nombre` FROM `roles` WHERE id=$rol";          
             $b = mysqli_query($mysqli, $b);
@@ -21,7 +25,7 @@
           }  
         }
 ?>
-<h1 class="text-center m-3">Editar usuario</h1>
+<h2 class="text-center m-3">Editar usuario</h2>
 <div class="centrar">
   <div class="contenedor">
     <form action="" method="post">
@@ -39,10 +43,10 @@
         
                 echo "<option value='$rol_name'>$rol_name</option>";
 
-                while($a = mysqli_fetch_assoc($a)){
-                  $a = ucfirst(mb_strtolower($a['nombre']));
-                  if($rol_name != $a){
-                    echo "<option value='$a'>$a</option>";
+                while($row = mysqli_fetch_assoc($a)){
+                  $option = ucfirst(mb_strtolower($row['nombre']));
+                  if($rol_name != $option){
+                    echo "<option value='$option'>$option</option>";
                   }
                 }
                 ?>
@@ -50,8 +54,8 @@
       </div>
 
       <div class="form-group">
-        <label for="pass" class="form-label">Restablecer contraseña</label>
-        <input type="checkbox" name="pass" class="form-controol">
+        <label for="pass" class="form-check-label">Restablecer contraseña</label>
+        <input type="checkbox" name="pass" class="form-check-input">
       </div>
       <div class="form-group">
         <input type="submit" name="editar" class="btn btn-primary mt-2" value="editar">
@@ -60,6 +64,9 @@
 
   if(isset($_POST['editar'])) 
     {
+      if($user_nivel <= 5){
+        echo "<p><strong>Error: </strong>¡No tienes permisos para editar al usuario!</p>";
+      }else{      
         $rol = mb_strtoupper(htmlspecialchars($_POST['rol']));
         $pass = htmlspecialchars($_POST['pass']);
 
@@ -90,6 +97,7 @@
             echo "<p> Si no redirige puedes hacer <a href='usuarios.php'>click aquí</a></p>";
           }
         }      
+      }
     }
 ?>
     </form> 

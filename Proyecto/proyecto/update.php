@@ -25,7 +25,7 @@
             }
 ?>
 
-<h1 class="text-center m-3">Actualizar incidencia</h1>
+<h2 class="text-center m-3">Actualizar incidencia</h2>
 <div class="centrar">
   <div class="contenedor">
     <form action="" method="post">
