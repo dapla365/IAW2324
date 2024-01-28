@@ -14,8 +14,6 @@
                 }else{
                     echo 'bi bi-moon-fill';
                 }
-
-                
             ?>"></i></a>
         <a href="login.php" id="salir">Salir</a>
       </div>

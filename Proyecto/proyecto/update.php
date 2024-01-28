@@ -31,18 +31,43 @@
     <form action="" method="post">
     <div class="form-group">
             <label for="planta" class="form-label">Planta</label>
-            <select id="planta" name="planta" class="form-control" onChange="cambiarPlanta()">
-                <option value="Baja">Baja</option>
-                <option value="Primera">Primera</option>
-                <option value="Segunda">Segunda</option>
+            <select id="planta" name="planta" class="form-control">
+                <?php 
+                echo "<option value='$planta'>$planta</option>";
+
+                $a = "SELECT * FROM plantas";
+                $a = mysqli_query($mysqli, $a);
+                while($row = mysqli_fetch_assoc($a)){
+                  $option = ucfirst(mb_strtolower($row['planta']));
+                  if($planta != $option){
+                    echo "<option value='$option'>$option</option>";
+                  }
+                }
+                ?>
             </select>
       </div>
       <div class="form-group">
             <label for="aula" class="form-label">Aula</label>
             <select id="aula" name="aula" class="form-control">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+              <?php 
+                echo "<option value='$aula'>$aula</option>";
+
+                $a = "SELECT * FROM plantas";
+                $a = mysqli_query($mysqli, $a);
+                while($row = mysqli_fetch_assoc($a)){
+                  $plantaid = $row['id'];
+                  $b = "SELECT * FROM aulas WHERE planta = '$plantaid'";     
+                  $b = mysqli_query($mysqli, $b);
+          
+                  while($rowb = mysqli_fetch_assoc($b)){
+                      $opcion = ucfirst(mb_strtolower($rowb['aula']));
+                      if($aula != $opcion){
+                        echo "<option value='$opcion'>$opcion</option>";
+                      }
+                  }
+                  break;
+              }
+              ?>
             </select>
       </div>
       <div class="form-group">
