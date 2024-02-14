@@ -4,7 +4,8 @@
 $opcion = $_POST['opcion'];
 
 // Consulta para obtener las opciones dependientes de la tabla 'aulas'
-$a = "SELECT * FROM plantas WHERE planta = '$opcion'";     
+
+$a = "SELECT * FROM plantas WHERE planta = 'mysql_real_escape_string($opcion)'";     
 $a = mysqli_query($mysqli, $a);
 
 // Generar las opciones para el segundo select
