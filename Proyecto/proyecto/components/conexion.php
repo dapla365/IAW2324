@@ -1,7 +1,7 @@
 <?php
 $hostname = "sql204.thsite.top";
 $username = "thsi_35476428";
-$password = "*******";
+$password = "R?Y??v?!";
 $dbname = "thsi_35476428_proyecto";
 
 // Crear conexión
