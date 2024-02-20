@@ -1,0 +1,94 @@
+html{
+    min-width: 300px;
+}
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centro{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+header a{
+    transition: all .2s;
+    color: #00000096;
+    text-decoration: none;
+}
+header h1{
+    color: #000;
+}
+
+header a:hover{
+    color: #000;
+}
+.nav1{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #00000049;
+}
+.derecha a{
+    margin: 5px;
+}
+#salir{
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    transition: all .2s;
+}
+#salir:hover{
+    color: #fff;
+    background-color: #6c757d;
+}
+.nav2{
+    display: flex;
+    justify-content: center;
+}
+.nav2 ul{
+    color: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.nav2 li {
+    position: relative;
+    color: transparent;
+    text-decoration: none;
+    user-select: none;
+    margin-right: 20px;
+}
+.nav2 li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 5px;
+    left: 0;
+    bottom: -6px;
+    transform: scaleX(0);
+    transition: transform .5s, color .5s;
+}
+.nav2 li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 425px) {
+    .centrar{
+        width: 100%;
+    }
+    .nav2 span{
+        display: none;
+    }
+}
+@media (max-width: 380px) {
+    .nav1 span{
+        display: none;
+    }
+}

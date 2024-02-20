@@ -1,0 +1,36 @@
+#footer, #incidencias, #incidencias_pendientes, #incidencias_completadas, #incidencias_create, body{
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
+.table {
+    --bs-table-bg: none;
+    --bs-table-color: none;
+    --bs-table-striped-color: none;
+    --bs-table-hover-color: none;
+}
+.table-dark{
+    --bs-table-bg: #3866f2c4; 
+    background-color: #3866f2c4;
+    color: #fff;
+    --bs-table-color: #fff;
+    --bs-table-hover-color: none;
+    --bs-table-striped-color: none;
+    --bs-table-border-color: none;
+    border-color: none;
+}
+header h1, header a:hover, #salir:hover{
+    color:  #fff;
+}
+header a{
+    color:  #ffffffb6;
+}
+.nav1{
+    border-bottom: 1px solid #ffffffb6;
+}
+#salir{
+    border: 1px solid #ffffffb6;
+}
+.nav2 li a::after {
+    background: #fff;
+}
