@@ -101,7 +101,7 @@
         if($planta == "" || $aula == "" || $descripcion == "" || $fecha_alta == "" || $fecha_alta == 'NULL'){
           echo "<p><strong>Error: </strong>¡Tiene que completar los campos obligatorios!</p>";
         }else{
-          $a = "INSERT INTO `incidencias` (`planta`, `aula`, `descripcion`, `fecha_alta`,`fecha_revision`,`fecha_solucion`,`comentario`, `usuario`) VALUES ('{$planta}','{$aula}','{$descripcion}',".$fecha_alta.", ".$fecha_rev.",". $fecha_sol.",'{$comentario}', '{$user_username}')";
+          $a = "INSERT INTO `incidencias` (`planta`, `aula`, `descripcion`, `fecha_alta`,`fecha_revision`,`fecha_solucion`,`comentario`, `usuario`) VALUES ('{$planta}','{$aula}','{$descripcion}',".$fecha_alta.", ".$fecha_rev.",". $fecha_sol.",'{$comentario}', '{$user_id}')";
           $a = mysqli_query($mysqli,$a);
           if (!$a) {
               echo "<p><strong>Error: </strong>Algo ha ido mal añadiendo la incidencia: ". mysqli_error($mysqli)."</p>";

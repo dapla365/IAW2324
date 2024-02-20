@@ -14,6 +14,14 @@
     
           while($row = mysqli_fetch_assoc($vista_incidencias))
             {
+              $u = $row['usuario'];
+              $j="SELECT * FROM usuarios WHERE id='$u'";               
+              $j= mysqli_query($mysqli, $j);
+              while($rowb = mysqli_fetch_assoc($j)){
+                $usuario = $rowb['correo']; 
+              }
+
+
               $id = $row['id'];                
               $planta = $row['planta'];        
               $aula = $row['aula'];         
@@ -29,6 +37,11 @@
 <div class="centrar">
   <div class="contenedor">
     <form action="" method="post">
+    <div class="form-group">
+        <label for="user" class="form-label">Usuario</label>
+        <input type="text" name="user" class="form-control" value="<?php echo $usuario ?>" disabled>
+    </div>
+
     <div class="form-group">
             <label for="planta" class="form-label">Planta</label>
             <select id="planta" name="planta" class="form-control">

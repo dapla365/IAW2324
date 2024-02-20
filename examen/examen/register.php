@@ -7,6 +7,11 @@
 
     <div class="form__container">
         <div class="form__group">
+            <input type="email" name="email" placeholder=" " required>
+            <label for="email">Correo:</label>
+            <span class="form_line"></span>
+        </div>
+        <div class="form__group">
             <input type="text" name="nombre" placeholder=" " required>
             <label for="nombre">Usuario:</label>
             <span class="form_line"></span>
@@ -28,44 +33,55 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "components/conexion.php";
 
+    $correo = mb_strtolower(htmlspecialchars($_POST["email"]));
     $nombre = mb_strtolower(htmlspecialchars($_POST["nombre"]));
     $contrasena_uno = htmlspecialchars($_POST["contrasena_uno"]);
     $contrasena_dos = htmlspecialchars($_POST["contrasena_dos"]);
 
-    $sql_usuario="SELECT * FROM `usuarios` WHERE `username` LIKE '".$nombre."'";
+    date_default_timezone_set("Europe/Madrid");
+    $sesion = date("d/m/Y h:i:s a");
+
+    $sql_usuario="SELECT * FROM usuarios WHERE username ='$nombre'";
     $result_user = mysqli_query($mysqli, $sql_usuario);
 
-    if(mysqli_num_rows($result_user)>0){
+    $sql_correo="SELECT * FROM usuarios WHERE correo = '$correo'";
+    $result_correo = mysqli_query($mysqli, $sql_correo);
+
+    if(mysqli_num_rows($result_user)>0 || mysqli_num_rows($result_correo)>0){
         mysqli_free_result($result_user);
         //Esta registrado
         echo "<p><strong>Error: </strong>el usuario ya está registrado.</p>";
     }else{
-        mysqli_free_result($result_user);
-        if($contrasena_uno == $contrasena_dos){
-            // Hash de la contraseña
-            $contrasena_hash = password_hash($contrasena_uno, PASSWORD_DEFAULT);
-
-            // Insertar usuario en la base de datos
-            $sql = "INSERT INTO usuarios (username, contrasena) VALUES ('$nombre', '$contrasena_hash')";
-
-            if ($mysqli->query($sql) === TRUE) {
-                echo "<p> Registro exitoso. Redirigiendo...</p>";
-                echo "<p> Si no redirige puedes hacer <a href='index.php'>click aquí</a></p>";
-
-                session_set_cookie_params(360);
-                session_start();
-                //$_SESSION['id']= array('tema'=>'white');
-                $_SESSION['darkmode']='white';
-                $_SESSION['usuario']=$nombre;
-
-                header("Refresh:3; url=index.php");
-            } else {
-                echo "Error en el registro: " . $mysqli->error;
-            }
-
-            $mysqli->close();
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            echo "Esta dirección de correo ($correo) no es válida.";
         }else{
-            echo "<p><strong>Error: </strong>las contraseñas no coinciden.</p>";
+            mysqli_free_result($result_user);
+            if($contrasena_uno == $contrasena_dos){
+                // Hash de la contraseña
+                $contrasena_hash = password_hash($contrasena_uno, PASSWORD_DEFAULT);
+
+                // Insertar usuario en la base de datos
+                $sql = "INSERT INTO usuarios (username, contrasena, correo, sesion) VALUES ('$nombre', '$contrasena_hash', '$correo', '$sesion')";
+
+                if ($mysqli->query($sql) === TRUE) {
+                    echo "<p> Registro exitoso. Redirigiendo...</p>";
+                    echo "<p> Si no redirige puedes hacer <a href='index.php'>click aquí</a></p>";
+
+                    session_set_cookie_params(360);
+                    session_start();
+                    //$_SESSION['id']= array('tema'=>'white');
+                    $_SESSION['darkmode']='white';
+                    $_SESSION['usuario']=$nombre;
+
+                    header("Refresh:3; url=index.php");
+                } else {
+                    echo "Error en el registro: " . $mysqli->error;
+                }
+
+                $mysqli->close();
+            }else{
+                echo "<p><strong>Error: </strong>las contraseñas no coinciden.</p>";
+            }
         }
     }
 }

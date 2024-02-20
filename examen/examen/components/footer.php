@@ -1,4 +1,11 @@
-<footer id="footer" class="blockquote-footer fixed-bottom">Gestión de incidencias del <a href="https://iesamachado.org" target="_blank">IES Antonio Machado</a>. Desarrollado por David Plaza Diaz</footer>
+<footer id="footer" class="blockquote-footer fixed-bottom">
+<?php 
+    echo 'Ultimo inicio de sesión '.  $_SESSION['sesion'];
+?>    
+<br>
+Gestión de incidencias del <a href="https://iesamachado.org" target="_blank">IES Antonio Machado</a>. Desarrollado por David Plaza Diaz
+</footer>
+
 <script>
     window.addEventListener('DOMContentLoaded', (evento) => {
         /* Obtenemos la fecha de hoy en formato ISO */

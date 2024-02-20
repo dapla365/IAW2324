@@ -34,7 +34,7 @@
               $j="SELECT * FROM usuarios WHERE id='$u'";               
               $j= mysqli_query($mysqli, $j);
               while($rowb = mysqli_fetch_assoc($j)){
-                $usuario = $rowb['username']; 
+                $usuario = $rowb['correo']; 
               }
 
               $id = $row['id'];                

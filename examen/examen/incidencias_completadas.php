@@ -31,6 +31,13 @@
             $q= mysqli_query($mysqli, $q);
 
             while($row = mysqli_fetch_assoc($q)){
+              $u = $row['usuario'];
+              $j="SELECT * FROM usuarios WHERE id='$u'";               
+              $j= mysqli_query($mysqli, $j);
+              while($rowb = mysqli_fetch_assoc($j)){
+                $usuario = $rowb['correo']; 
+              }
+
               $id = $row['id'];                
               $planta = $row['planta'];        
               $aula = $row['aula'];         
@@ -39,7 +46,7 @@
               $fecha_rev = $row['fecha_revision'];        
               $fecha_sol = $row['fecha_solucion'];        
               $comentario = $row['comentario']; 
-              $usuario = $row['usuario']; 
+
 
               /* DAR FORMATO FECHA */
               if($fecha_alta != ""){
