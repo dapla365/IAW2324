@@ -28,12 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         require_once 'components/conexion.php';
 
         $sql_usuario="SELECT * FROM usuarios WHERE username = '$nombre' OR correo = '$nombre'";
-        $sql_sesion="SELECT sesion FROM usuarios WHERE username = '$nombre' OR correo = '$nombre'";
+        $sql_sesion="SELECT ultimo_acceso FROM usuarios WHERE username = '$nombre' OR correo = '$nombre'";
+        $sql_ip="SELECT ip FROM usuarios WHERE username = '$nombre' OR correo = '$nombre'";
 
-        // GUARDAR FECHA DE ULTIMA SESION
+        // OBTENER FECHA DE ULTIMA SESION
         $result_sesion = mysqli_query($mysqli, $sql_sesion);
         while($row = mysqli_fetch_assoc($result_sesion)){
-            $sql_sesion = $row['sesion'];
+            $sql_sesion = $row['ultimo_acceso'];
+        }
+
+        // OBTENER IP DE ULTIMA SESION
+        $result_ip = mysqli_query($mysqli, $sql_ip);
+        while($row = mysqli_fetch_assoc($result_ip)){
+            $sql_ip = $row['ip'];
         }
 
         $result_user = mysqli_query($mysqli, $sql_usuario);
@@ -53,12 +60,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_set_cookie_params(360);
                 session_start();
 
+                //GUARDAR FECHA ULTIMA CONEXION
                 date_default_timezone_set("Europe/Madrid");
-                $sesion = date("d/m/Y h:i:s a");
-                $a = "UPDATE usuarios set sesion = '$sesion' WHERE username = '$nombre' OR correo = '$nombre'";
+                $ultimo_acceso = date("d/m/Y h:i:s a");                
+                $a = "UPDATE usuarios set ultimo_acceso = '$ultimo_acceso' WHERE username = '$nombre' OR correo = '$nombre'";
                 $a= mysqli_query($mysqli, $a);
 
-                $_SESSION['sesion']=$sql_sesion;
+                //GUARDAR IP ULTIMA CONEXION
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $a = "UPDATE usuarios set ip = '$ip' WHERE username = '$nombre' OR correo = '$nombre'";
+                $a= mysqli_query($mysqli, $a);
+
+                $_SESSION['ultimo_acceso']=$sql_sesion;
+                $_SESSION['ip']=$sql_ip;
                 $_SESSION['darkmode']='white';
 
                 //USUARIO (CORREO O NOMBRE)

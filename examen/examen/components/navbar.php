@@ -4,6 +4,11 @@
     <div class="nav1">
       <div class="izquierda">
         <a href="usuarios.php"><i class="bi bi-person-fill"></i><span> <?php echo "$user_username"?></span></a>
+        <?php 
+        if($user_nivel > 5){
+          echo '<a href="addUser.php"><i class="bi bi-person-fill-add"></i></a>';
+        }
+        ?>
       </div>
     <a href="index.php"><h1>Incidencias AM</h1></a>
       <div class="derecha">

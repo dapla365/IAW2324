@@ -9,9 +9,9 @@
               <th class="text-center" scope="col">Planta</th>
               <th class="text-center" scope="col">Aula</th>
               <th class="text-center" scope="col">Descripción</th>
-              <th class="text-center" scope="col">Fecha alta</th>
+              <th class="text-center" scope="col"><a href='index.php?orden=fecha_alta'> Fecha alta</a></th>
               <th class="text-center" scope="col">Fecha revisión</th>
-              <th class="text-center" scope="col">Fecha solución</th>
+              <th class="text-center" scope="col"><a href='index.php?orden=fecha_solucion'>Fecha solución</a></th>
               <th class="text-center" scope="col">Comentario</th>
               <th class="text-center" scope="col">Usuario</th>
               <?php
@@ -25,9 +25,15 @@
 
  
           <?php
-
-            $q="SELECT * FROM incidencias";               
-            $q= mysqli_query($mysqli, $q);
+            $q="SELECT * FROM incidencias"; 
+            if (isset($_GET['orden'])) {
+              $a = htmlspecialchars($_GET['orden']); 
+             // echo $a;
+              $a="SELECT * FROM `incidencias` ORDER BY `incidencias`.`{$a}` DESC";  
+              $q= mysqli_query($mysqli,$a);            
+            }else{
+              $q= mysqli_query($mysqli, $q);
+            }
 
             while($row = mysqli_fetch_assoc($q)){
               $u = $row['usuario'];
@@ -74,6 +80,8 @@
               if($user_nivel >= 5){
                 echo " <td class='text-center'> <a href='view.php?incidencia_id={$id}' class='btn btn-primary'> <i class='bi bi-eye'></i> Ver</a> </td>";
                 echo " <td class='text-center' > <a href='update.php?editar&incidencia_id={$id}' class='btn btn-secondary'><i class='bi bi-pencil'></i> Editar</a> </td>";
+              }
+              if($user_nivel > 5){
                 echo " <td class='text-center'>  <a href='delete.php?eliminar={$id}' class='btn btn-danger'> <i class='bi bi-trash'></i> Eliminar</a> </td>";
               }
               echo " </tr> ";

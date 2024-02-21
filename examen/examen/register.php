@@ -38,12 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena_uno = htmlspecialchars($_POST["contrasena_uno"]);
     $contrasena_dos = htmlspecialchars($_POST["contrasena_dos"]);
 
+    //FECHA ULTIMO ACCESO
     date_default_timezone_set("Europe/Madrid");
-    $sesion = date("d/m/Y h:i:s a");
+    $ultimo_acceso = date("d/m/Y h:i:s a");
 
+    //DIRECCION ULTIMO ACCESO
+    $ip = $_SERVER['REMOTE_ADDR'];
+
+    //LOGIN CON USUARIO O CORREO
     $sql_usuario="SELECT * FROM usuarios WHERE username ='$nombre'";
     $result_user = mysqli_query($mysqli, $sql_usuario);
-
     $sql_correo="SELECT * FROM usuarios WHERE correo = '$correo'";
     $result_correo = mysqli_query($mysqli, $sql_correo);
 
@@ -61,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $contrasena_hash = password_hash($contrasena_uno, PASSWORD_DEFAULT);
 
                 // Insertar usuario en la base de datos
-                $sql = "INSERT INTO usuarios (username, contrasena, correo, sesion) VALUES ('$nombre', '$contrasena_hash', '$correo', '$sesion')";
+                $sql = "INSERT INTO usuarios (username, contrasena, correo, ultimo_acceso, ip) VALUES ('$nombre', '$contrasena_hash', '$correo', '$ultimo_acceso', '$ip')";
 
                 if ($mysqli->query($sql) === TRUE) {
                     echo "<p> Registro exitoso. Redirigiendo...</p>";
@@ -69,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     session_set_cookie_params(360);
                     session_start();
-                    //$_SESSION['id']= array('tema'=>'white');
                     $_SESSION['darkmode']='white';
                     $_SESSION['usuario']=$nombre;
 

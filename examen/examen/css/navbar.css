@@ -31,6 +31,9 @@ header a:hover{
     justify-content: space-between;
     border-bottom: 1px solid #00000049;
 }
+.izquierda a{
+    margin: 5px;
+}
 .derecha a{
     margin: 5px;
 }

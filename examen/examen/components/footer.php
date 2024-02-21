@@ -1,8 +1,15 @@
 <footer id="footer" class="blockquote-footer fixed-bottom">
 <?php 
-    echo 'Ultimo inicio de sesión '.  $_SESSION['sesion'];
+if($_SESSION['ultimo_acceso'] != null){
+    echo 'Fecha última conexión: '.  $_SESSION['ultimo_acceso'];
+    echo '<br>';
+}
+if($_SESSION['ip'] != null){
+    echo 'Dirección última conexión: '.  $_SESSION['ip'];
+    echo '<br>';
+}
 ?>    
-<br>
+
 Gestión de incidencias del <a href="https://iesamachado.org" target="_blank">IES Antonio Machado</a>. Desarrollado por David Plaza Diaz
 </footer>
 
